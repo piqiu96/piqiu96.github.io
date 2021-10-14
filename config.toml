@@ -21,6 +21,7 @@ enableRobotsTXT = true
 # 是否使用 emoji 代码
 enableEmoji = true
 
+publishDir = "docs"
 
 [params]
   #  LoveIt 主题版本

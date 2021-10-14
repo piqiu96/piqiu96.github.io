@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>我的全新 Hugo 网站111131312</title>
+        <link>http://example.org/</link>
+        <description>这是我的全新 Hugo 网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</lastBuildDate>
+            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>First_post</title>
+    <link>http://example.org/first_post/</link>
+    <pubDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/first_post/</guid>
+    <description><![CDATA[sfjaklsfjlkasjflk]]></description>
+</item></channel>
+</rss>
