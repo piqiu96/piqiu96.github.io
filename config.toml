@@ -20,7 +20,7 @@ enableRobotsTXT = true
 # whether to use emoji code
 # 是否使用 emoji 代码
 enableEmoji = true
-
+# 编译打包发布位置
 publishDir = "docs"
 
 [params]
@@ -88,13 +88,13 @@ publishDir = "docs"
     #  页面头部导航栏标题配置
     [params.header.title]
       # LOGO 的 URL
-      logo = ""
+      logo = "111"
       # 标题名称
-      name = ""
+      name = "fadfafsfs112"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = ""
+      pre = "llll"
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-      post = ""
+      post = "llll"
       #  是否为标题显示打字机动画
       typeit = false
 
@@ -102,7 +102,7 @@ publishDir = "docs"
   [params.footer]
     enable = true
     #  自定义内容 (支持 HTML 格式)
-    custom = ''
+    custom = 'fadfsafafas'
     #  是否显示 Hugo 和主题信息
     hugo = true
     #  是否显示版权信息
@@ -168,10 +168,10 @@ publishDir = "docs"
   [params.social]
     GitHub = "xxxx"
     Linkedin = ""
-    Twitter = "xxxx"
-    Instagram = "xxxx"
-    Facebook = "xxxx"
-    Telegram = "xxxx"
+    Twitter = ""
+    Instagram = ""
+    Facebook = ""
+    Telegram = ""
     Medium = ""
     Gitlab = ""
     Youtubelegacy = ""
@@ -181,12 +181,12 @@ publishDir = "docs"
     Quora = ""
     Keybase = ""
     Pinterest = ""
-    Reddit = ""
+    Reddit = "123"
     Codepen = ""
     FreeCodeCamp = ""
     Bitbucket = ""
     Stackoverflow = ""
-    Weibo = ""
+    Weibo = "123"
     Odnoklassniki = ""
     VK = ""
     Flickr = ""
@@ -207,10 +207,10 @@ publishDir = "docs"
     Steam = ""
     Twitch = ""
     Strava = ""
-    Skype = ""
+    Skype = "123"
     Whatsapp = ""
-    Zhihu = ""
-    Douban = ""
+    Zhihu = "123"
+    Douban = "123"
     Angellist = ""
     Slidershare = ""
     Jsfiddle = ""
@@ -227,9 +227,9 @@ publishDir = "docs"
     Gitea = ""
     XMPP = ""
     Matrix = ""
-    Bilibili = ""
+    Bilibili = "1231"
     Email = "xxxx@xxxx.com"
-    RSS = true # 
+    RSS = false
 
   #  文章页面配置
   [params.page]
@@ -297,10 +297,10 @@ publishDir = "docs"
     #  文章页面的分享信息设置
     [params.page.share]
       enable = true
-      Twitter = true
-      Facebook = true
+      Twitter = false
+      Facebook = false
       Linkedin = false
-      Whatsapp = true
+      Whatsapp = false
       Pinterest = false
       Tumblr = false
       HackerNews = false
@@ -316,11 +316,11 @@ publishDir = "docs"
       Flipboard = false
       Weibo = true
       Renren = false
-      Myspace = true
+      Myspace = false
       Blogger = true
-      Baidu = false
+      Baidu = true
       Odnoklassniki = false
-      Evernote = true
+      Evernote = false
       Skype = false
       Trello = false
       Mix = false
@@ -441,7 +441,7 @@ publishDir = "docs"
 
 # 作者配置
 [author]
-  name = "xxxx"
+  name = "fajslfjalskfjl"
   email = ""
   link = ""
 
