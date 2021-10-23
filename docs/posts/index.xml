@@ -4,11 +4,11 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 我的全新 Hugo 网站111131312</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>First_post</title>
+    <title>个人推荐书单</title>
     <link>http://example.org/first_post/</link>
     <pubDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://example.org/first_post/</guid>
-    <description><![CDATA[sfjaklsfjlkasjflk]]></description>
+    <description><![CDATA[afafasfdadfafadf Preface 📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职]]></description>
 </item></channel>
 </rss>
