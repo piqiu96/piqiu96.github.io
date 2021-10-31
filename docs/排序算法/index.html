@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>排序算法 - 我的全新 Hugo 网站111131312</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="排序算法" />
+<meta property="og:description" content="排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-31T15:29:39+08:00" />
+<meta property="article:modified_time" content="2021-10-31T15:29:39+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="排序算法"/>
+<meta name="twitter:description" content="排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" /><link rel="prev" href="http://example.org/first_post/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "排序算法",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95\/"
+        },"genre": "posts","wordcount":  1824 ,
+        "url": "http:\/\/example.org\/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95\/","datePublished": "2021-10-31T15:29:39+08:00","dateModified": "2021-10-31T15:29:39+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "皮邱"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="我的全新 Hugo 网站111131312"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />码生皮邱</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="我的全新 Hugo 网站111131312"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />码生皮邱</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">排序算法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-31">2021-10-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1824 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一算法分类">一、算法分类</a></li>
+    <li><a href="#二算法实现">二、算法实现</a>
+      <ul>
+        <li><a href="#21插入排序">2.1、插入排序</a>
+          <ul>
+            <li><a href="#211直接插入排序">2.1.1、直接插入排序</a></li>
+            <li><a href="#212希尔排序">2.1.2、希尔排序</a></li>
+          </ul>
+        </li>
+        <li><a href="#22交换排序">2.2、交换排序</a>
+          <ul>
+            <li><a href="#221冒泡排序">2.2.1、冒泡排序</a></li>
+            <li><a href="#222快速排序">2.2.2、快速排序</a></li>
+          </ul>
+        </li>
+        <li><a href="#23选择排序">2.3、选择排序</a>
+          <ul>
+            <li><a href="#231简单选择排序">2.3.1、简单选择排序</a></li>
+            <li><a href="#232堆排序">2.3.2、堆排序</a></li>
+          </ul>
+        </li>
+        <li><a href="#24归并排序">2.4、归并排序</a>
+          <ul>
+            <li><a href="#241二路归并排序">2.4.1、二路归并排序</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="排序算法">排序算法</h1>
+<h2 id="一算法分类">一、算法分类</h2>
+<ul>
+<li>插入排序
+<ul>
+<li>直接插入排序</li>
+<li>希尔排序</li>
+</ul>
+</li>
+<li>交换排序
+<ul>
+<li>冒泡排序</li>
+<li>快速排序</li>
+</ul>
+</li>
+<li>选择排序
+<ul>
+<li>简单选择排序</li>
+<li>堆排序</li>
+</ul>
+</li>
+<li>归并排序
+<ul>
+<li>二路归并排序（递归实现）</li>
+</ul>
+</li>
+</ul>
+<h2 id="二算法实现">二、算法实现</h2>
+<h3 id="21插入排序">2.1、插入排序</h3>
+<h4 id="211直接插入排序">2.1.1、直接插入排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35
+<ul>
+<li>有序区{12,15}</li>
+<li>无序区{9,20,6,31,24,2,17,35}</li>
+</ul>
+</li>
+<li>思路：
+<ol>
+<li>将无序区的第一个元素，称为候选元素。</li>
+<li>将候选元素与有序区元素比较，选择适当位置插入。</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class InsertionSort {
+     public static void sort(int [] array){
+           for(int i=1;i&lt;array.length;i++){
+                for(int j=i;j&gt;=1 &amp;&amp; array[j]&lt;array[j-1];j--){
+                     int temp =array[j];
+                     array[j]=array[j-1];
+                     array[j-1]=temp;
+                }
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35};
+           InsertionSort.sort(array);
+           System.out.println(Arrays.toString(array));
+     }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="212希尔排序">2.1.2、希尔排序</h4>
+<ul>
+<li>产生：直接插入排序在基本正序的时候，排序效率高，所以把数组拆分很多个小数组，进行简单排序</li>
+<li>思路：
+<ol>
+<li>将数组分组，间距从[d=n/2-1]，变换d=d/2</li>
+<li>分别将不同分区进行直接插入排序。</li>
+<li>当d=1，合并所有的分区进行直接插入排序</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class ShellSort {
+     //采取分区
+     public static void sort(int [] array){
+           for(int d=array.length/2;d&gt;=1;d=d/2){
+                insertSort(array,d);
+           }
+     }
+
+     //插入排序
+     public static void insertSort(int [] array,int d){
+           for(int i=d;i&lt;array.length;i++){
+                for(int j=d;j&gt;=d &amp;&amp; array[j]&lt;array[j-d];j=j+d){
+                     int temp=array[j];
+                     array[j]=array[j-d];
+                     array[j-d]=temp;
+                }
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           InsertionSort.sort(array);
+           System.out.println(Arrays.toString(array));
+     }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22交换排序">2.2、交换排序</h3>
+<h4 id="221冒泡排序">2.2.1、冒泡排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35
+<ul>
+<li>无序区：{12,15,9,20,6,31,24,2,17}</li>
+<li>有序区：{35}</li>
+</ul>
+</li>
+<li>问题：
+<ol>
+<li>如何确定需要冒泡排序范围，保证有序记录不参加下一趟的排序？</li>
+<li>如何判断冒泡排序结束？</li>
+</ol>
+</li>
+<li>思路：
+<ol>
+<li>从数组头开始，候选元素跟后继元素比较，通过交换选出最大元素，直到无序区选出最大元素放入有序区的。</li>
+<li>记录有序区的头索引，将不参加下一趟排序。</li>
+<li>当没有元素交换，冒泡排序结束。</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class BubbleSort {
+     public static void sort(int [] array){
+           int exchange=array.length;
+           //判断无序列是否有交换，冒泡排序结束标志
+           while(exchange!=0){
+                //无序区的边界
+                int bound=exchange;
+                exchange=0;
+                for(int i=1;i&lt;bound;i++){
+                     if(array[i]&lt;array[i-1]){
+                           int temp=array[i];
+                           array[i]=array[i-1];
+                           array[i-1]=temp;
+                           exchange=i;
+                     }
+                }
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           BubbleSort.sort(array);
+           System.out.println(Arrays.toString(array));
+     }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="222快速排序">2.2.2、快速排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35</li>
+<li>思路：
+<ol>
+<li>一次快速划分。选择轴值，最终轴值左侧小于轴值，轴值右侧大于轴值。</li>
+<li>例如：最初选择轴值为12，通过一次快速划分，{2,6,9,12,15,20,17,35,31}</li>
+<li>对轴值左侧、轴值右侧。 递归调用一次快速划分。</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class QuickSort {
+     public static int partition(int [] array,int low,int high){
+           int i=low;
+           int j=high;
+           int temp;
+           //当i==j,结束一次快速划分
+           while(i&lt;j){
+                //向右侧扫描
+                while(i&lt;j &amp;&amp; array[i]&lt;array[j])
+                     j--;
+                //说明轴值大于array[j],交换轴值变成array[j]
+                if(i&lt;j){
+                     temp=array[i];
+                     array[i]=array[j];
+                     array[j]=temp;
+                     i++;
+                }
+
+                //向左侧扫描
+                while(i&lt;j &amp;&amp; array[i]&lt;array[j])
+                     i++;
+
+                if(i&lt;j){
+                     temp=array[i];
+                     array[i]=array[j];
+                     array[j]=temp;
+                     j--;
+                }
+           }
+           return i;
+     }
+
+     public static void sort(int [] array,int low,int high){
+           if(low&lt;high){
+                int mid =partition(array, low, high);
+                sort(array, low, mid-1);
+                sort(array, mid+1, high);
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           QuickSort.sort(array, 0, array.length-1);
+           System.out.println(Arrays.toString(array));
+     }
+
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23选择排序">2.3、选择排序</h3>
+<h4 id="231简单选择排序">2.3.1、简单选择排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35
+<ul>
+<li>有序区：{}</li>
+<li>无序区：{12,15,9,20,6,31,24,2,17,35 }</li>
+</ul>
+</li>
+<li>思路
+<ol>
+<li>把无序区的最小元素，采用选择方式放入有序区末尾</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class SelectSort {
+     public static void sort(int [] array){
+           int index;
+           for(int i=0; i&lt;array.length; i++){
+                index=i;
+                for(int j=i; j&lt;array.length; j++){
+                     if(array[j] &lt; array[index])
+                           index = j;
+                }
+                if(index != i){
+                     int temp = array[i];
+                     array[i] = array[index];
+                     array[index] = temp;
+                }
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           SelectSort.sort(array);
+           System.out.println(Arrays.toString(array));
+     }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="232堆排序">2.3.2、堆排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35</li>
+<li>思路：
+<ol>
+<li>把候选元素构建成大根堆。</li>
+<li>从数组最后一个元素开始遍历，把大根堆的最大元素放入有序区。</li>
+<li>去掉有序区元素，重新调整大根堆。</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class HeapSort {
+     //根据候选元素，构建成大根堆
+     public static void adjustHeap(int [] array,int i,int len){
+           int j=0;
+           int temp=array[i];
+           for(j=i*2;j&lt;len;j=j*2){
+                if( j&lt;len &amp;&amp; array[j]&lt;array[j+1])
+                     j++;
+
+                if(temp&gt;=array[j])
+                     break;
+                array[i]=array[j];
+                i=j;
+           }
+           array[i]=temp;
+     }
+
+     public static void sort(int [] array){
+           int i;
+           //选非叶子节点，构造大根堆
+           for(i=array.length/2-1;i&gt;=0;i--){
+                adjustHeap(array, i, array.length-1);
+           }
+           //不断选大根堆最大元素放入有序区
+           for(i=array.length-1;i&gt;=0;i--){
+                int temp=array[0];
+                array[0]=array[i];
+                array[i]=temp;
+                adjustHeap(array, 0, i-1);
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           HeapSort.sort(array);
+           System.out.println(Arrays.toString(array));
+     }
+
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="24归并排序">2.4、归并排序</h3>
+<h4 id="241二路归并排序">2.4.1、二路归并排序</h4>
+<ul>
+<li>数组：12,15,9,20,6,31,24,2,17,35</li>
+<li>思路：
+<ol>
+<li>利用一次归并算法将两个分区元素，归并到一个数组里。</li>
+<li>先把数组划分成长度为1的序列区间，利用递归的方式，归并到一个序列里。</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class MergeSort {
+     public static void merge(int [] array,int low,int mid,int high){
+           int [] tempArray=new int[high-low+1];
+           int i=low;
+           int j=mid+1;
+           int k=0;
+
+           while(i&lt;=mid &amp;&amp; j&lt;=high){    
+                if(array[i]&lt;=array[j]){
+                     tempArray[k++]=array[i++];
+                }else{
+                     tempArray[k++]=array[j++];
+                }
+           }
+
+           //把第一个分片序列，处理余下数据
+           while(i&lt;=mid){
+                tempArray[k++]=array[i++];
+           }
+
+           //把第二个分片序列，处理余下数据
+           while(j&lt;=high){
+                tempArray[k++]=array[j++];
+           }
+
+           //把临时数组的数据加入到原数组
+           for(int k2=0;k2&lt;tempArray.length;k2++){
+                array[low+k2]=tempArray[k2];
+           }
+     }
+
+     public static void sort(int [] array,int low, int high){
+           int mid=(low+high)/2;
+           if(low&lt;high){
+                sort(array, low, mid);
+                sort(array, mid+1, high);
+                merge(array, low, mid, high);
+           }
+     }
+
+     public static void main(String [] args){
+           int [] array={12,15,9,20,6,31,24,2,17,35,5};
+           MergeSort.sort(array,0,array.length-1);
+           System.out.println(Arrays.toString(array));
+     }
+
+}
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="个人推荐书单"><i class="fas fa-angle-left fa-fw"></i>个人推荐书单</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
