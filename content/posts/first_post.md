@@ -1,11 +1,13 @@
+
 ---
 title: "个人推荐书单"
 date: 2021-10-14T16:22:23+08:00
 draft: false
+tags: ["Markdown", "HTML"]
+categories: ["Markdown"]
 ---
 
-afafasfdadfafadf
-# Preface
+
 
 📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修炼等相关书籍。
 
@@ -17,7 +19,7 @@ afafasfdadfafadf
 - [《Effective Java 中文版（第 2 版）》](./java/Effective%20Java%20中文版（第2版）.pdf)
 - [《Java 编程思想（第 4 版）》](./java/Java编程思想（第4版）.pdf)
 
-## JavaScript
+### JavaScript
 
 - [《你不知道的 JavaScript（上卷）》](./javascript/你不知道的JavaScript（上卷）.pdf)
 - [《你不知道的 JavaScript（中卷）》](./javascript/你不知道的JavaScript（中卷）.pdf)
@@ -33,7 +35,7 @@ afafasfdadfafadf
 - [《JavaScript DOM 编程艺术》](./javascript/JavaScript_DOM编程艺术.pdf)
 - [《基于 MVC 的 JavaScript Web 富应用开发》](./javascript/基于MVC的JavaScript_Web富应用开发.pdf)
 
-## Node.js
+### Node.js
 
 - [《深入浅出 node.js》](./nodejs/深入浅出Node.js.pdf)
 - [《Node.js 实战》](./nodejs/Node.js实战.pdf)
@@ -57,7 +59,7 @@ afafasfdadfafadf
 - [《C++ Primer Plus（第 5 版）》](./c++/C++%20Primer%20Plus（第5版）.pdf)
 - [《C++编程思想（第 1 卷）》](./c++/C++编程思想（第1卷）.pdf)
 
-## Golang
+### Golang
 
 - [《Go 学习笔记（第 4 版）》](./golang/Go学习笔记（第4版）.pdf)
 - [《Go 学习笔记（第 6 版下卷）》](./golang/Go学习笔记（第6版下卷）.pdf)
@@ -65,7 +67,7 @@ afafasfdadfafadf
 - [《Go 程序设计语言》](./golang/go程序设计语言.pdf)
 - [《Go 语言实战》](./golang/Go语言实战.pdf)
 
-## Python
+### Python
 
 - [《Python 基础教程（第 2 版）》](./python/Python基础教程（第2版）.pdf)
 - [《Python 编程：从入门到实践》](./python/Python编程：从入门到实践.pdf)

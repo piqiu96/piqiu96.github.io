@@ -88,13 +88,13 @@ publishDir = "docs"
     #  页面头部导航栏标题配置
     [params.header.title]
       # LOGO 的 URL
-      logo = "111"
+      logo = "/images/avatar.png"
       # 标题名称
-      name = "fadfafsfs112"
+      name = "码农皮邱"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = "llll"
+      pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-      post = "llll"
+      post = ""
       #  是否为标题显示打字机动画
       typeit = false
 
@@ -102,7 +102,7 @@ publishDir = "docs"
   [params.footer]
     enable = true
     #  自定义内容 (支持 HTML 格式)
-    custom = 'fadfsafafas'
+    custom = ''
     #  是否显示 Hugo 和主题信息
     hugo = true
     #  是否显示版权信息
@@ -110,7 +110,7 @@ publishDir = "docs"
     #  是否显示作者
     author = true
     # 网站创立年份
-    since = 2019
+    since = 2021
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
     icp = ""
     # 许可协议信息 (支持 HTML 格式)
@@ -146,9 +146,9 @@ publishDir = "docs"
       # 主页显示头像的 URL
       avatarURL = "/images/avatar.png"
       #  主页显示的网站标题 (支持 HTML 格式)
-      title = "是我的全新 Hug11111"
+      title = ""
       # 主页显示的网站副标题
-      subtitle = "这是我的全新 Hugo 网站"
+      subtitle = "🌞积极阳光、实事求是、知行合一!"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
@@ -166,7 +166,7 @@ publishDir = "docs"
 
   # 作者的社交信息设置
   [params.social]
-    GitHub = "xxxx"
+    GitHub = "piqiu96"
     Linkedin = ""
     Twitter = ""
     Instagram = ""
@@ -181,12 +181,12 @@ publishDir = "docs"
     Quora = ""
     Keybase = ""
     Pinterest = ""
-    Reddit = "123"
+    Reddit = ""
     Codepen = ""
     FreeCodeCamp = ""
     Bitbucket = ""
     Stackoverflow = ""
-    Weibo = "123"
+    Weibo = ""
     Odnoklassniki = ""
     VK = ""
     Flickr = ""
@@ -207,10 +207,10 @@ publishDir = "docs"
     Steam = ""
     Twitch = ""
     Strava = ""
-    Skype = "123"
+    Skype = ""
     Whatsapp = ""
-    Zhihu = "123"
-    Douban = "123"
+    Zhihu = "qiu-yong-51-43"
+    Douban = ""
     Angellist = ""
     Slidershare = ""
     Jsfiddle = ""
@@ -227,8 +227,8 @@ publishDir = "docs"
     Gitea = ""
     XMPP = ""
     Matrix = ""
-    Bilibili = "1231"
-    Email = "xxxx@xxxx.com"
+    Bilibili = ""
+    Email = "yong_qiu_ch@163.com"
     RSS = false
 
   #  文章页面配置
@@ -256,7 +256,7 @@ publishDir = "docs"
       # 是否使用目录
       enable = true
       #  是否保持使用文章前面的静态目录
-      keepStatic = true
+      keepStatic = false
       # 是否使侧边目录自动折叠展开
       auto = true
     #  代码配置
@@ -308,17 +308,17 @@ publishDir = "docs"
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Digg = false
       Stumbleupon = false
       Flipboard = false
-      Weibo = true
+      Weibo = false
       Renren = false
       Myspace = false
-      Blogger = true
-      Baidu = true
+      Blogger = false
+      Baidu = false
       Odnoklassniki = false
       Evernote = false
       Skype = false
@@ -441,8 +441,8 @@ publishDir = "docs"
 
 # 作者配置
 [author]
-  name = "fajslfjalskfjl"
-  email = ""
+  name = "皮邱"
+  email = "yong_qiu_ch@163.com"
   link = ""
 
 # 网站地图配置
