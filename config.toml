@@ -90,7 +90,7 @@ publishDir = "docs"
       # LOGO 的 URL
       logo = "/images/avatar.png"
       # 标题名称
-      name = "码农皮邱"
+      name = "码生皮邱"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
