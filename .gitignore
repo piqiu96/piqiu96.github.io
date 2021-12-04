@@ -1,5 +1,6 @@
 .git
 .svn
+.idea
 public
 
 # Binaries for programs and plugins

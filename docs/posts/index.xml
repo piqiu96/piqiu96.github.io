@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - 我的全新 Hugo 网站111131312</title>
+        <title>所有文章 - 阿邱爷｜Blog</title>
         <link>http://example.org/posts/</link>
-        <description>所有文章 | 我的全新 Hugo 网站111131312</description>
+        <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
             <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
     <title>排序算法</title>
@@ -18,5 +18,12 @@
     <author>作者</author>
     <guid>http://example.org/first_post/</guid>
     <description><![CDATA[📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修]]></description>
+</item><item>
+    <title>Git速查手册</title>
+    <link>http://example.org/git%E5%AE%9E%E6%88%98/</link>
+    <pubDate>Fri, 04 Dec 2020 13:12:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/git%E5%AE%9E%E6%88%98/</guid>
+    <description><![CDATA[一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 + 版本控制 + 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想]]></description>
 </item></channel>
 </rss>
