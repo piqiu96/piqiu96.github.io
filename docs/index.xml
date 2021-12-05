@@ -34,5 +34,12 @@
     <author>作者</author>
     <guid>http://example.org/git%E5%AE%9E%E6%88%98/</guid>
     <description><![CDATA[一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 + 版本控制 + 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想]]></description>
+</item><item>
+    <title>大学四年，如何成为还算不错的程序员？</title>
+    <link>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</link>
+    <pubDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</guid>
+    <description><![CDATA[1、问题 经常有些读者在后台问一些指导性的问题，让我冷不丁去回答，给出建议都是碎片化的，无法形成有效可落地的建议。 举个例子 我学习什么能进入优秀]]></description>
 </item></channel>
 </rss>

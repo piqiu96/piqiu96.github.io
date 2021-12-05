@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>程序人生思考 - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/</link>
+        <description>程序人生思考 - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml" /><item>
+    <title>大学四年，如何成为还算不错的程序员？</title>
+    <link>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</link>
+    <pubDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</guid>
+    <description><![CDATA[1、问题 经常有些读者在后台问一些指导性的问题，让我冷不丁去回答，给出建议都是碎片化的，无法形成有效可落地的建议。 举个例子 我学习什么能进入优秀]]></description>
+</item></channel>
+</rss>
