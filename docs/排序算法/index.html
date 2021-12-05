@@ -20,7 +20,7 @@
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" /><link rel="prev" href="http://example.org/first_post/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" /><link rel="prev" href="http://example.org/first_post/" /><link rel="next" href="http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -224,23 +224,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class InsertionSort {
-     public static void sort(int [] array){
-           for(int i=1;i&lt;array.length;i++){
-                for(int j=i;j&gt;=1 &amp;&amp; array[j]&lt;array[j-1];j--){
-                     int temp =array[j];
-                     array[j]=array[j-1];
-                     array[j-1]=temp;
-                }
-           }
-     }
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InsertionSort</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+           <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="n">1</span> <span class="o">&amp;&amp;</span> <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">];</span><span class="n">j</span><span class="o">--){</span>
+                     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35};
-           InsertionSort.sort(array);
-           System.out.println(Arrays.toString(array));
-     }
-}
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">};</span>
+           <span class="n">InsertionSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="212希尔排序">2.1.2、希尔排序</h4>
@@ -283,31 +283,31 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class ShellSort {
-     //采取分区
-     public static void sort(int [] array){
-           for(int d=array.length/2;d&gt;=1;d=d/2){
-                insertSort(array,d);
-           }
-     }
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShellSort</span> <span class="o">{</span>
+     <span class="c1">//采取分区
+</span><span class="c1"></span>     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+           <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">/</span><span class="n">2</span><span class="o">;</span><span class="n">d</span><span class="o">&gt;=</span><span class="n">1</span><span class="o">;</span><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="o">/</span><span class="n">2</span><span class="o">){</span>
+                <span class="n">insertSort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span><span class="n">d</span><span class="o">);</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     //插入排序
-     public static void insertSort(int [] array,int d){
-           for(int i=d;i&lt;array.length;i++){
-                for(int j=d;j&gt;=d &amp;&amp; array[j]&lt;array[j-d];j=j+d){
-                     int temp=array[j];
-                     array[j]=array[j-d];
-                     array[j-d]=temp;
-                }
-           }
-     }
+     <span class="c1">//插入排序
+</span><span class="c1"></span>     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertSort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">d</span><span class="o">){</span>
+           <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">d</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">d</span><span class="o">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="n">d</span> <span class="o">&amp;&amp;</span> <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">d</span><span class="o">];</span><span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">+</span><span class="n">d</span><span class="o">){</span>
+                     <span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">d</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">d</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           InsertionSort.sort(array);
-           System.out.println(Arrays.toString(array));
-     }
-}
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">InsertionSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="22交换排序">2.2、交换排序</h3>
@@ -362,31 +362,31 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class BubbleSort {
-     public static void sort(int [] array){
-           int exchange=array.length;
-           //判断无序列是否有交换，冒泡排序结束标志
-           while(exchange!=0){
-                //无序区的边界
-                int bound=exchange;
-                exchange=0;
-                for(int i=1;i&lt;bound;i++){
-                     if(array[i]&lt;array[i-1]){
-                           int temp=array[i];
-                           array[i]=array[i-1];
-                           array[i-1]=temp;
-                           exchange=i;
-                     }
-                }
-           }
-     }
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSort</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">exchange</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+           <span class="c1">//判断无序列是否有交换，冒泡排序结束标志
+</span><span class="c1"></span>           <span class="k">while</span><span class="o">(</span><span class="n">exchange</span><span class="o">!=</span><span class="n">0</span><span class="o">){</span>
+                <span class="c1">//无序区的边界
+</span><span class="c1"></span>                <span class="kt">int</span> <span class="n">bound</span><span class="o">=</span><span class="n">exchange</span><span class="o">;</span>
+                <span class="n">exchange</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">bound</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+                     <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">]){</span>
+                           <span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                           <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">];</span>
+                           <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                           <span class="n">exchange</span><span class="o">=</span><span class="n">i</span><span class="o">;</span>
+                     <span class="o">}</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           BubbleSort.sort(array);
-           System.out.println(Arrays.toString(array));
-     }
-}
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">BubbleSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="222快速排序">2.2.2、快速排序</h4>
@@ -451,53 +451,53 @@
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class QuickSort {
-     public static int partition(int [] array,int low,int high){
-           int i=low;
-           int j=high;
-           int temp;
-           //当i==j,结束一次快速划分
-           while(i&lt;j){
-                //向右侧扫描
-                while(i&lt;j &amp;&amp; array[i]&lt;array[j])
-                     j--;
-                //说明轴值大于array[j],交换轴值变成array[j]
-                if(i&lt;j){
-                     temp=array[i];
-                     array[i]=array[j];
-                     array[j]=temp;
-                     i++;
-                }
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuickSort</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">partition</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">low</span><span class="o">,</span><span class="kt">int</span> <span class="n">high</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">low</span><span class="o">;</span>
+           <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">high</span><span class="o">;</span>
+           <span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+           <span class="c1">//当i==j,结束一次快速划分
+</span><span class="c1"></span>           <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">j</span><span class="o">){</span>
+                <span class="c1">//向右侧扫描
+</span><span class="c1"></span>                <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">])</span>
+                     <span class="n">j</span><span class="o">--;</span>
+                <span class="c1">//说明轴值大于array[j],交换轴值变成array[j]
+</span><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">j</span><span class="o">){</span>
+                     <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                     <span class="n">i</span><span class="o">++;</span>
+                <span class="o">}</span>
 
-                //向左侧扫描
-                while(i&lt;j &amp;&amp; array[i]&lt;array[j])
-                     i++;
+                <span class="c1">//向左侧扫描
+</span><span class="c1"></span>                <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">])</span>
+                     <span class="n">i</span><span class="o">++;</span>
 
-                if(i&lt;j){
-                     temp=array[i];
-                     array[i]=array[j];
-                     array[j]=temp;
-                     j--;
-                }
-           }
-           return i;
-     }
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">j</span><span class="o">){</span>
+                     <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                     <span class="n">j</span><span class="o">--;</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
+           <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+     <span class="o">}</span>
 
-     public static void sort(int [] array,int low,int high){
-           if(low&lt;high){
-                int mid =partition(array, low, high);
-                sort(array, low, mid-1);
-                sort(array, mid+1, high);
-           }
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">low</span><span class="o">,</span><span class="kt">int</span> <span class="n">high</span><span class="o">){</span>
+           <span class="k">if</span><span class="o">(</span><span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="o">){</span>
+                <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span><span class="n">partition</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+                <span class="n">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">mid</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+                <span class="n">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">mid</span><span class="o">+</span><span class="n">1</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           QuickSort.sort(array, 0, array.length-1);
-           System.out.println(Arrays.toString(array));
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">QuickSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
 
-}
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="23选择排序">2.3、选择排序</h3>
@@ -542,29 +542,29 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class SelectSort {
-     public static void sort(int [] array){
-           int index;
-           for(int i=0; i&lt;array.length; i++){
-                index=i;
-                for(int j=i; j&lt;array.length; j++){
-                     if(array[j] &lt; array[index])
-                           index = j;
-                }
-                if(index != i){
-                     int temp = array[i];
-                     array[i] = array[index];
-                     array[index] = temp;
-                }
-           }
-     }
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SelectSort</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">index</span><span class="o">;</span>
+           <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="o">;</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++){</span>
+                     <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">])</span>
+                           <span class="n">index</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">index</span> <span class="o">!=</span> <span class="n">i</span><span class="o">){</span>
+                     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>
+                     <span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           SelectSort.sort(array);
-           System.out.println(Arrays.toString(array));
-     }
-}
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">SelectSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="232堆排序">2.3.2、堆排序</h4>
@@ -621,45 +621,45 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class HeapSort {
-     //根据候选元素，构建成大根堆
-     public static void adjustHeap(int [] array,int i,int len){
-           int j=0;
-           int temp=array[i];
-           for(j=i*2;j&lt;len;j=j*2){
-                if( j&lt;len &amp;&amp; array[j]&lt;array[j+1])
-                     j++;
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HeapSort</span> <span class="o">{</span>
+     <span class="c1">//根据候选元素，构建成大根堆
+</span><span class="c1"></span>     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">adjustHeap</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span><span class="kt">int</span> <span class="n">len</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
+           <span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+           <span class="k">for</span><span class="o">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">*</span><span class="n">2</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">len</span><span class="o">;</span><span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">*</span><span class="n">2</span><span class="o">){</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">len</span> <span class="o">&amp;&amp;</span> <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]&lt;</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">])</span>
+                     <span class="n">j</span><span class="o">++;</span>
 
-                if(temp&gt;=array[j])
-                     break;
-                array[i]=array[j];
-                i=j;
-           }
-           array[i]=temp;
-     }
+                <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">&gt;=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">])</span>
+                     <span class="k">break</span><span class="o">;</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="n">i</span><span class="o">=</span><span class="n">j</span><span class="o">;</span>
+           <span class="o">}</span>
+           <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+     <span class="o">}</span>
 
-     public static void sort(int [] array){
-           int i;
-           //选非叶子节点，构造大根堆
-           for(i=array.length/2-1;i&gt;=0;i--){
-                adjustHeap(array, i, array.length-1);
-           }
-           //不断选大根堆最大元素放入有序区
-           for(i=array.length-1;i&gt;=0;i--){
-                int temp=array[0];
-                array[0]=array[i];
-                array[i]=temp;
-                adjustHeap(array, 0, i-1);
-           }
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+           <span class="c1">//选非叶子节点，构造大根堆
+</span><span class="c1"></span>           <span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">/</span><span class="n">2</span><span class="o">-</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">--){</span>
+                <span class="n">adjustHeap</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+           <span class="o">}</span>
+           <span class="c1">//不断选大根堆最大元素放入有序区
+</span><span class="c1"></span>           <span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">--){</span>
+                <span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">array</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">0</span><span class="o">]=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                <span class="n">adjustHeap</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           HeapSort.sort(array);
-           System.out.println(Arrays.toString(array));
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">HeapSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
 
-}
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="24归并排序">2.4、归并排序</h3>
@@ -724,53 +724,53 @@
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class MergeSort {
-     public static void merge(int [] array,int low,int mid,int high){
-           int [] tempArray=new int[high-low+1];
-           int i=low;
-           int j=mid+1;
-           int k=0;
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MergeSort</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">low</span><span class="o">,</span><span class="kt">int</span> <span class="n">mid</span><span class="o">,</span><span class="kt">int</span> <span class="n">high</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">tempArray</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">high</span><span class="o">-</span><span class="n">low</span><span class="o">+</span><span class="n">1</span><span class="o">];</span>
+           <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">low</span><span class="o">;</span>
+           <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="n">1</span><span class="o">;</span>
+           <span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
 
-           while(i&lt;=mid &amp;&amp; j&lt;=high){    
-                if(array[i]&lt;=array[j]){
-                     tempArray[k++]=array[i++];
-                }else{
-                     tempArray[k++]=array[j++];
-                }
-           }
+           <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">mid</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">high</span><span class="o">){</span>    
+                <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]){</span>
+                     <span class="n">tempArray</span><span class="o">[</span><span class="n">k</span><span class="o">++]=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                     <span class="n">tempArray</span><span class="o">[</span><span class="n">k</span><span class="o">++]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+                <span class="o">}</span>
+           <span class="o">}</span>
 
-           //把第一个分片序列，处理余下数据
-           while(i&lt;=mid){
-                tempArray[k++]=array[i++];
-           }
+           <span class="c1">//把第一个分片序列，处理余下数据
+</span><span class="c1"></span>           <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">mid</span><span class="o">){</span>
+                <span class="n">tempArray</span><span class="o">[</span><span class="n">k</span><span class="o">++]=</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+           <span class="o">}</span>
 
-           //把第二个分片序列，处理余下数据
-           while(j&lt;=high){
-                tempArray[k++]=array[j++];
-           }
+           <span class="c1">//把第二个分片序列，处理余下数据
+</span><span class="c1"></span>           <span class="k">while</span><span class="o">(</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">high</span><span class="o">){</span>
+                <span class="n">tempArray</span><span class="o">[</span><span class="n">k</span><span class="o">++]=</span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+           <span class="o">}</span>
 
-           //把临时数组的数据加入到原数组
-           for(int k2=0;k2&lt;tempArray.length;k2++){
-                array[low+k2]=tempArray[k2];
-           }
-     }
+           <span class="c1">//把临时数组的数据加入到原数组
+</span><span class="c1"></span>           <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k2</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">k2</span><span class="o">&lt;</span><span class="n">tempArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">k2</span><span class="o">++){</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">low</span><span class="o">+</span><span class="n">k2</span><span class="o">]=</span><span class="n">tempArray</span><span class="o">[</span><span class="n">k2</span><span class="o">];</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void sort(int [] array,int low, int high){
-           int mid=(low+high)/2;
-           if(low&lt;high){
-                sort(array, low, mid);
-                sort(array, mid+1, high);
-                merge(array, low, mid, high);
-           }
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">,</span><span class="kt">int</span> <span class="n">low</span><span class="o">,</span> <span class="kt">int</span> <span class="n">high</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="n">mid</span><span class="o">=(</span><span class="n">low</span><span class="o">+</span><span class="n">high</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
+           <span class="k">if</span><span class="o">(</span><span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="o">){</span>
+                <span class="n">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span>
+                <span class="n">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">mid</span><span class="o">+</span><span class="n">1</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+                <span class="n">merge</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+           <span class="o">}</span>
+     <span class="o">}</span>
 
-     public static void main(String [] args){
-           int [] array={12,15,9,20,6,31,24,2,17,35,5};
-           MergeSort.sort(array,0,array.length-1);
-           System.out.println(Arrays.toString(array));
-     }
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+           <span class="kt">int</span> <span class="o">[]</span> <span class="n">array</span><span class="o">={</span><span class="n">12</span><span class="o">,</span><span class="n">15</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">31</span><span class="o">,</span><span class="n">24</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">17</span><span class="o">,</span><span class="n">35</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+           <span class="n">MergeSort</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">array</span><span class="o">,</span><span class="n">0</span><span class="o">,</span><span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+     <span class="o">}</span>
 
-}
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -798,7 +798,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="个人推荐书单"><i class="fas fa-angle-left fa-fw"></i>个人推荐书单</a></div>
+    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="个人推荐书单"><i class="fas fa-angle-left fa-fw"></i>个人推荐书单</a>
+            <a href="/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/" class="next" rel="next" title="写作工具链">写作工具链<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

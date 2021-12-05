@@ -4,7 +4,14 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>写作工具链</title>
+    <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/</link>
+    <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/</guid>
+    <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
+</item><item>
     <title>排序算法</title>
     <link>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
     <pubDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</pubDate>
@@ -19,7 +26,7 @@
     <guid>http://example.org/first_post/</guid>
     <description><![CDATA[📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修]]></description>
 </item><item>
-    <title>Git速查手册</title>
+    <title>Git速查</title>
     <link>http://example.org/git%E5%AE%9E%E6%88%98/</link>
     <pubDate>Fri, 04 Dec 2020 13:12:33 &#43;0800</pubDate>
     <author>作者</author>

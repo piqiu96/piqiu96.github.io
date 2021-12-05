@@ -1,2 +1,10 @@
 # piqiu96.github.io
-自定义
+
+
+## 构建命令
+```
+hugo
+
+hugo serve
+hugo serve --disableFastRender
+```

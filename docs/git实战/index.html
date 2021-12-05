@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Git速查手册 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Git速查手册" />
+        <title>Git速查 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Git速查" />
 <meta property="og:description" content="一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 &#43; 版本控制 &#43; 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/git%E5%AE%9E%E6%88%98/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="Git速查手册"/>
+<meta name="twitter:title" content="Git速查"/>
 <meta name="twitter:description" content="一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 &#43; 版本控制 &#43; 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -24,7 +24,7 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Git速查手册",
+        "headline": "Git速查",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -118,7 +118,7 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Git速查手册</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Git速查</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-04">2020-12-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1270 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
@@ -168,30 +168,30 @@
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg"
-        data-srcset="http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg, http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg 1.5x, http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg 2x"
+        data-src="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg"
+        data-srcset="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg 1.5x, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg 2x"
         data-sizes="auto"
-        alt="http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg"
-        title="http://ww1.sinaimg.cn/large/006pGKjbly1genpkot6luj30m808mq33.jpg" /></p>
+        alt="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg"
+        title="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/deltas.jpeg" /></p>
 <p><strong>全量：每次记录本次变更的所有文件放入缓存区，恢复的时候直接缓存区找到全量版本回滚。</strong>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg"
-        data-srcset="http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg, http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg 1.5x, http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg 2x"
+        data-src="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg"
+        data-srcset="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg 1.5x, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg 2x"
         data-sizes="auto"
-        alt="http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg"
-        title="http://ww1.sinaimg.cn/large/006pGKjbly1genpk5bj8bj30m808h74k.jpg" /></p>
+        alt="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg"
+        title="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/snapshots.jpeg" /></p>
 <p>于是，GIt有几个核心流程和核心概念。
 核心概念：文件流转状态（已提交、已修改、已暂存），为了可通过文件状态跟踪出文件内容，于是git项目有三个阶段：工作区、暂存区以及 Git 目录。
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg"
-        data-srcset="http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg, http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg 1.5x, http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg 2x"
+        data-src="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg"
+        data-srcset="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg 1.5x, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg 2x"
         data-sizes="auto"
-        alt="http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg"
-        title="http://ww1.sinaimg.cn/large/006pGKjbly1genpizbku4j30m80c90sy.jpg" /></p>
+        alt="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg"
+        title="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/areas.jpeg" /></p>
 <p>核心流程：</p>
 <ol>
 <li>在工作区中修改文件。</li>
@@ -202,11 +202,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://ww1.sinaimg.cn/large/006pGKjbly1genma5vcvyj312k0r64qp.jpg"
-        data-srcset="http://ww1.sinaimg.cn/large/006pGKjbly1genma5vcvyj312k0r64qp.jpg, http://ww1.sinaimg.cn/large/006pGKjbly1genma5vcvyj312k0r64qp.jpg 1.5x, http://ww1.sinaimg.cn/large/006pGKjbly1genma5vcvyj312k0r64qp.jpg 2x"
+        data-src="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg"
+        data-srcset="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg 1.5x, https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg 2x"
         data-sizes="auto"
-        alt="http://ww1.sinaimg.cn/large/006pGKjbly1genma5vcvyj312k0r64qp.jpg"
-        title="git速查" /></p>
+        alt="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg"
+        title="https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/git/cmdlist.jpeg" /></p>
 <p><strong>场景一：添加如何代码，提cr</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
