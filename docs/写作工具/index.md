@@ -1,8 +1,5 @@
----
-title: "写作工具链"
-date: 2021-12-05T08:17:29+08:00
-draft: false
----
+# 写作工具
+
 
 ## 图床
 - 网址：[https://www.jsdelivr.com/?docs=gh](https://www.jsdelivr.com/?docs=gh)  
@@ -16,6 +13,7 @@ draft: false
 
 ## 代码排版
 - https://carbon.now.sh/
+
 
 
 

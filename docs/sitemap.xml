@@ -2,14 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://example.org/categories/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/posts/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/tags/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/tags/%E5%86%99%E4%BD%9C/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc><lastmod>2021-10-31T15:29:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/tags/html/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/tags/markdown/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/markdown/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/first_post/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/%E6%8E%A8%E8%8D%90%E4%B9%A6%E5%8D%95/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/booklist/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/tags/%E8%AF%BB%E4%B9%A6/</loc><lastmod>2021-10-14T16:22:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/git%E5%AE%9E%E6%88%98/</loc><lastmod>2020-12-04T13:12:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

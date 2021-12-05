@@ -7,11 +7,11 @@
             <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>写作工具链</title>
-    <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/</link>
+    <title>写作工具</title>
+    <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</link>
     <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE/</guid>
+    <guid>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</guid>
     <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
 </item><item>
     <title>排序算法</title>
@@ -21,11 +21,11 @@
     <guid>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
     <description><![CDATA[排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实]]></description>
 </item><item>
-    <title>个人推荐书单</title>
-    <link>http://example.org/first_post/</link>
+    <title>经典书单</title>
+    <link>http://example.org/booklist/</link>
     <pubDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/first_post/</guid>
+    <guid>http://example.org/booklist/</guid>
     <description><![CDATA[📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修]]></description>
 </item><item>
     <title>Git速查</title>

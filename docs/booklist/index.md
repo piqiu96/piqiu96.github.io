@@ -1,12 +1,4 @@
-
----
-title: "个人推荐书单"
-date: 2021-10-14T16:22:23+08:00
-draft: false
-tags: ["Markdown", "HTML"]
-categories: ["Markdown"]
----
-
+# 经典书单
 
 
 📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修炼等相关书籍。
@@ -18,32 +10,6 @@ categories: ["Markdown"]
 
 - [《Effective Java 中文版（第 2 版）》](./java/Effective%20Java%20中文版（第2版）.pdf)
 - [《Java 编程思想（第 4 版）》](./java/Java编程思想（第4版）.pdf)
-
-### JavaScript
-
-- [《你不知道的 JavaScript（上卷）》](./javascript/你不知道的JavaScript（上卷）.pdf)
-- [《你不知道的 JavaScript（中卷）》](./javascript/你不知道的JavaScript（中卷）.pdf)
-- [《你不知道的 JavaScript（下卷）》](./javascript/你不知道的JavaScript（下卷）.pdf)
-- [《JavaScript 高级程序设计第三版》](<./javascript/JavaScript高级程序设计(第3版).pdf>)
-- [《JavaScript 权威指南(第 6 版)》](<./javascript/JavaScript权威指南(第6版).pdf>)
-- [《JavaScript 语言精粹》](./javascript/JavaScript语言精粹.pdf)
-- [《JavaScript 设计模式与开发实践》](./javascript/JavaScript设计模式与开发实践.pdf)
-- [《JavaScript 函数式编程》](./javascript/JavaScript函数式编程.pdf)
-- [《JavaScript 面向对象编程》](./javascript/javascript面向对象编程.pdf)
-- [《JavaScript 设计模式》](./javascript/JavaScript设计模式.pdf)
-- [《精通 JavaScript》](./javascript/精通JavaScript.pdf)
-- [《JavaScript DOM 编程艺术》](./javascript/JavaScript_DOM编程艺术.pdf)
-- [《基于 MVC 的 JavaScript Web 富应用开发》](./javascript/基于MVC的JavaScript_Web富应用开发.pdf)
-
-### Node.js
-
-- [《深入浅出 node.js》](./nodejs/深入浅出Node.js.pdf)
-- [《Node.js 实战》](./nodejs/Node.js实战.pdf)
-- [《Node 学习指南》](./nodejs/Node学习指南.pdf)
-- [《Node 与 Express 开发》](./nodejs/Node与Express开发.pdf)
-- [《Node.js 开发指南》](./nodejs/Node.js开发指南.pdf)
-- [《了不起的 Node.js》](./nodejs/了不起的Node.js.pdf)
-- [《Node 即学即用》](./nodejs/Node即学即用.pdf)
 
 ## C
 
@@ -196,5 +162,7 @@ categories: ["Markdown"]
 - [《程序员的职业素养》](./others/程序员的职业素养.pdf)
 - [《程序员的自我修养：链接、装载与库》](./others/程序员的自我修养：链接、装载与库.pdf)
 - [《高效程序员的 45 个习惯》](./others/高效程序员的45个习惯.pdf)
+
+
 
 

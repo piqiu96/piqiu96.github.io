@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>效率工具 - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</link>
+        <description>效率工具 - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+    <title>写作工具</title>
+    <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
+</item></channel>
+</rss>
