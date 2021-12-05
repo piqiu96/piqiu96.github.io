@@ -62,7 +62,7 @@
 
 根据我的经验，可将内容分为原理、应用、擅长方向三个纬度。**原理和应用纬度必须学习，方向纬度根据自己擅长方向深入学习。** 
 
-![](http://ww1.sinaimg.cn/mw690/006pGKjbly1g6s5x2v90oj31je0n643h.jpg)
+![](https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/codelife/university/plan.jpeg)
 
 原理：计算机网络、操作系统、数据结构/算法，这些东西都是专业课好好学即可，数据结构/算法日常多刷刷题，大不可必研究特么深入，待校招前留出时间来重点突击和复习即可。
 
@@ -73,6 +73,7 @@
 - 后端开发方向：数据库、缓存、消息队列、rpc、微服务
 - 大数据开发方向：Hadoop、Spark、Storm、Flink
 - 自动化运维方向：elk、ansible、zabbix、docker、k8s
+
 {{< /admonition >}}
 
 
@@ -103,7 +104,8 @@
 对于现已从事计算机行业的同学，其实这部分内容非常简单，可能按照正常水平少则几天，多则不超过一周就能开发出简单模块。简单说，它顶多是毕设设计水准，主要是让新手在感官上体验软件产品。**本质上，在计算机世界里，抽象来看就是数据的计算、传输、存储。随着你的经验增多，你会发现很多技术都是诞生或优化性能都是在解决计算、存储、传输的问题。**
 在这里，主要让大家在系统的角度感受最简单、最初级的技术模型。
 
-![](http://ww1.sinaimg.cn/mw690/006pGKjbly1g6s5x2tardj31tq0w2te2.jpg)
+![](https://cdn.jsdelivr.net/gh/piqiu96/aqiucdn/imgs/codelife/university/simple_example.jpeg)
+
 1. Linux操作系统：承载应用程序、数据库的运行，提供CPU供应用程序计算。
 2. 应用程序（Java/Python/Php）：JAVA主要采用Servlet、JDBC承载网络的传输、数据库连接管理。
 3. 数据库（MySQL）：主要理解关系类数据库的存储，对数据进行操作。
