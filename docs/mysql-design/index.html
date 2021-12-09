@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>MySQL设计与应用 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="MySQL设计与应用" />
+<meta property="og:description" content="1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/mysql-design/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-09T11:00:03+08:00" />
+<meta property="article:modified_time" content="2021-12-09T11:00:03+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="MySQL设计与应用"/>
+<meta name="twitter:description" content="1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/mysql-design/" /><link rel="prev" href="http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/" /><link rel="next" href="http://example.org/mysql-transaction/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MySQL设计与应用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/mysql-design\/"
+        },"genre": "posts","wordcount":  1953 ,
+        "url": "http:\/\/example.org\/mysql-design\/","datePublished": "2021-12-09T11:00:03+08:00","dateModified": "2021-12-09T11:00:03+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "皮邱"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">MySQL设计与应用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-09">2021-12-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1953 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1数据库与缓存不一致问题">1、数据库与缓存不一致问题</a>
+      <ul>
+        <li><a href="#11问题产生">1.1、问题产生</a></li>
+        <li><a href="#12解决办法">1.2、解决办法</a>
+          <ul>
+            <li><a href="#121mysql单机版">1.2.1、MySQL单机版</a></li>
+            <li><a href="#122mysql主从--读写分离">1.2.2、MySQL主从 + 读写分离</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2数据库与es同步">2、数据库与ES同步</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1数据库与缓存不一致问题">1、数据库与缓存不一致问题</h2>
+<h3 id="11问题产生">1.1、问题产生</h3>
+<p><strong>为什么用缓存？</strong></p>
+<ul>
+<li>提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远</li>
+</ul>
+<p><strong>会产生什么问题？</strong></p>
+<ul>
+<li>数据不一致：数据冗余意味着不一致</li>
+</ul>
+<h3 id="12解决办法">1.2、解决办法</h3>
+<p>要点：并发（时序）、异常情况
+指标：缓存利用率、并发安全、一致性</p>
+<h4 id="121mysql单机版">1.2.1、MySQL单机版</h4>
+<p>最佳实践：先更新数据库，再删除缓存
+<strong>方案一：更新数据库、更新缓存</strong></p>
+<ul>
+<li>思路
+<ul>
+<li>先更新数据库，再更新缓存</li>
+<li>先更新数据库，再更新缓存</li>
+</ul>
+</li>
+<li>问题
+<ul>
+<li>异常问题：第一步更新成功，第一步更新失败，必将导致不一致。</li>
+<li>并发问题：并发必将有时序问题。
+<ul>
+<li>例子
+<ul>
+<li>A线程更新数据库（X=1），B线程更新数据库（X=2）</li>
+<li>B线程更新缓存（X=2），A线程更新缓存（X=1）</li>
+</ul>
+</li>
+<li>结果：X的值，数据库=2，缓存=1，不一致持续时长取决于缓存过期时间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结论：该方案原则上不推荐使用，主要是时序问题无法保证</li>
+</ul>
+<p><strong>方案二：更新数据库、删除缓存</strong></p>
+<ul>
+<li>
+<p>思路</p>
+<ul>
+<li>先删除缓存，再更新数据库</li>
+<li>先更新数据库，再删除缓存</li>
+</ul>
+</li>
+<li>
+<p>问题</p>
+<ul>
+<li>异常问题：跟第一种方案同理无法避免，异常必将导致不一致</li>
+<li>并发问题
+<ul>
+<li>先删除缓存，再更新数据库
+<ul>
+<li>例子
+<ul>
+<li>1、线程A要更新X=2（原值X=1）</li>
+<li>2、线程A先删除缓存</li>
+<li>3、线程B读取缓存，发现不存在，从数据库读取旧值（X=1）</li>
+<li>4、线程A将新值写入数据库（X=2）</li>
+<li>5、线程B将旧值写入缓存（X=1）</li>
+</ul>
+</li>
+<li>结果：X的值，数据库=2，缓存=1</li>
+<li>分析：读写请求并发，A、B线程交替读写，出现概率还是可能的。</li>
+</ul>
+</li>
+<li>先更新数据库，再删除缓存
+<ul>
+<li>例子
+<ul>
+<li>1、缓存中 X 不存在（数据库 X = 1）</li>
+<li>2、线程 A 读取数据库，得到旧值（X = 1）</li>
+<li>3、线程 B 更新数据库（X = 2)</li>
+<li>4、线程 B 删除缓存</li>
+<li>5、线程 A 将旧值写入缓存（X = 1）</li>
+</ul>
+</li>
+<li>结果：X的值，数据库=2，缓存=1</li>
+<li>分析：出现时机且满足以下三个条件，现实中出现概率较少，存在理论上的可能
+<ul>
+<li>线程A读请求时，缓存已失效</li>
+<li>读写请求并发</li>
+<li>步骤2中读时长 &gt; 「步骤3+步骤4」中的「更新+删除」动作总时长概率较低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>结论：「先更新数据库，再删除缓存」从分析结果来看能绝大概率解决并发问题，是该命中的最佳实践。</p>
+</li>
+</ul>
+<p><strong>根据「先更新数据库，再删除缓存」仅解决并发问题，如何解决异常问题？</strong></p>
+<ul>
+<li>思路一：一致性要求不高，容忍短暂不一致，等待缓存到过期时间，不处理</li>
+<li>思路二：删缓存动作失败，尝试充实重试
+<ul>
+<li>同步重试：仅在网络抖动丢包的情况</li>
+<li>异步重试：写MQ异步读取消费，MQ需保证可靠性直到消费成功</li>
+</ul>
+</li>
+<li>思路三：监听MySQL的binlog，思路就跟主从原理类似，实现缓存同步。
+<ul>
+<li>市场上现有工具可参考阿里的canal，「数据库+缓存」、「数据库 + es索引」</li>
+</ul>
+</li>
+</ul>
+<h4 id="122mysql主从--读写分离">1.2.2、MySQL主从 + 读写分离</h4>
+<p><strong>问题：MySQL主从 + 读写分离架构中，读请求存在延迟导致不一致？</strong></p>
+<ol>
+<li>线程 A 更新主库 X = 2（原值 X = 1）</li>
+<li>线程 A 删除缓存</li>
+<li>线程 B 查询缓存，没有命中，查询「从库」得到旧值（从库 X = 1）</li>
+<li>从库「同步」完成（主从库 X = 2）</li>
+<li>线程 B 将「旧值」写入缓存（X = 1）
+结果： X 的值在缓存中是 1（旧值），在主从库中是 2（新值），也发生不一致。
+分析：在有大事务或资源抢占明显时，主从延时的概率还是存在的，故发生的概率还是会存在</li>
+</ol>
+<p><strong>思路：根据经验，预估主从延时时间，将缓存再次删除</strong></p>
+<ul>
+<li>方案一：更新数据库，删除缓存，休眠等待延时时间，再次删除缓存</li>
+<li>方案二（推荐）：更新数据库，将删动作写入延时队列（延时时间根据经验1-5s），定期消费消息执行删除动作</li>
+<li>方案三：选择性读主，更新数据库时，记录「库 + 表 + pk」作为键记录到缓存中，读db时根据该键决定是否读主</li>
+</ul>
+<p>总结：最佳实践选择「先更新数据库，再删除缓存」的方案实现数据库与缓存一致，根据业务一致性要求和MySQL主从+读写分离架构考虑是否要使用延迟删除方案。</p>
+<p>实践：写多读少场景保db高可用，读多写少做缓存高可用 + 容灾缓存。</p>
+<p>其他：很多时候，缓存也存在主从架构，甚至还有跨机房延迟等情况，实际从理论上提出完美方案就非常复杂了。最佳办法还是保证每一个子系统子服务保证一致，写的代码保障高质量避免极端情况出现，故才能达到全局最优的方案。</p>
+<h2 id="2数据库与es同步">2、数据库与ES同步</h2>
+<p>问题起源：在用户产品研发中，经常会碰到很多复杂多样的查询，如标签、分类、人群等，而实际的元数据却存在于关系型数据库MySQL，关系型数据库对于复杂查询很难支持，同时它也不适合承担太多索引的职责。于是，引入ES充当索引角色，也就是形成复杂标签与原数据ID成映射关系。</p>
+<ul>
+<li>
+<p>读请求：查询es索引，找到索引与元数据ID，通过元数据ID查MySQL具体数据，最终返回</p>
+</li>
+<li>
+<p>写请求</p>
+<ul>
+<li>方式一（同步写）：写MySQL、写ES索引，存在写失败问题，扩展性也不好</li>
+<li>方式二（异步写）
+<ul>
+<li>来源一：监听MySQL的binlog，将binlog写入MQ，解析binlog将数据同步到ES</li>
+<li>来源二：业务制定日志规范，打印用户日志，采集用户日志，流式计算日志，将日志导入ES</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ" target="_blank" rel="noopener noreffer">数据库与缓存一致性问题@水滴与银弹</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql-design/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="写作工具"><i class="fas fa-angle-left fa-fw"></i>写作工具</a>
+            <a href="/mysql-transaction/" class="next" rel="next" title="MySQL事务实现原理">MySQL事务实现原理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

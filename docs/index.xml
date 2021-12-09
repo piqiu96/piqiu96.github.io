@@ -4,9 +4,23 @@
         <link>http://example.org/</link>
         <description>这是我的全新 Hugo 网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</lastBuildDate>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>MySQL事务实现原理</title>
+    <link>http://example.org/mysql-transaction/</link>
+    <pubDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-transaction/</guid>
+    <description><![CDATA[MySQL事务 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分别是]]></description>
+</item><item>
+    <title>MySQL设计与应用</title>
+    <link>http://example.org/mysql-design/</link>
+    <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-design/</guid>
+    <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
+</item><item>
     <title>写作工具</title>
     <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</link>
     <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>

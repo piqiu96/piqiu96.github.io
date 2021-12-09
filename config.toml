@@ -369,7 +369,7 @@ publishDir = "docs"
     # 图片 URL
     image = ""
     # 缩略图 URL
-    thumbnailUrl = ""
+    #thumbnailUrl = ""
 
   #  网站分析配置
   [params.analytics]

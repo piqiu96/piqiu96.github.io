@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>MySQL事务实现原理 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="MySQL事务实现原理" />
+<meta property="og:description" content="MySQL事务 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分别是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/mysql-transaction/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-09T11:07:23+08:00" />
+<meta property="article:modified_time" content="2021-12-09T11:07:23+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="MySQL事务实现原理"/>
+<meta name="twitter:description" content="MySQL事务 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分别是"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/mysql-transaction/" /><link rel="prev" href="http://example.org/mysql-design/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MySQL事务实现原理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/mysql-transaction\/"
+        },"genre": "posts","wordcount":  5040 ,
+        "url": "http:\/\/example.org\/mysql-transaction\/","datePublished": "2021-12-09T11:07:23+08:00","dateModified": "2021-12-09T11:07:23+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "皮邱"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">MySQL事务实现原理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-09">2021-12-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5040 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1事务是什么">1、事务是什么？</a></li>
+        <li><a href="#2事务并发会产生什么问题">2、事务并发会产生什么问题？</a></li>
+        <li><a href="#3如何解决并发事务产生的问题">3、如何解决并发事务产生的问题？</a>
+          <ul>
+            <li><a href="#31在并发控制中锁机制是如何演进的">3.1、在并发控制中，锁机制是如何演进的？</a></li>
+            <li><a href="#32mysql中是如何解决并发问题的">3.2、MySQL中是如何解决并发问题的？</a>
+              <ul>
+                <li><a href="#321这几种隔离级别是什么含义呢">3.2.1、这几种隔离级别是什么含义呢？</a></li>
+                <li><a href="#322不同隔离级别分别能解决那些事务并发问题脏读不可重复读幻读">3.2.2、不同隔离级别分别能解决那些事务并发问题（脏读、不可重复读、幻读）？</a></li>
+                <li><a href="#323mysql是如何在可重复读隔离级别解决幻读问题的">3.2.3、Mysql是如何在可重复读隔离级别解决幻读问题的？</a></li>
+                <li><a href="#324mvccmulti-version-concurrent-control是如何实现的">3.2.4、MVCC（Multi Version Concurrent Control）是如何实现的？</a>
+                  <ul>
+                    <li><a href="#3241mvvc被称为多版本并发控制什么是数据多版本">3.2.4.1、<strong>MVVC被称为多版本并发控制，什么是数据多版本？</strong></a></li>
+                    <li><a href="#3242mysql的mvcc机制底层是如何实现的">3.2.4.2、<strong>MySQL的MVCC机制底层是如何实现的？</strong></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#4事务的执行流程">4、事务的执行流程</a>
+          <ul>
+            <li><a href="#41事务是如何执行的">4.1、事务是如何执行的？</a></li>
+            <li><a href="#42事务是如何回滚的">4.2、事务是如何回滚的？</a></li>
+          </ul>
+        </li>
+        <li><a href="#5数据库事务是怎么实现的">5、数据库事务是怎么实现的？</a>
+          <ul>
+            <li><a href="#51原子性持久性">5.1、原子性&amp;持久性</a></li>
+            <li><a href="#53一致性">5.3、一致性</a></li>
+            <li><a href="#54隔离性">5.4、隔离性</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="mysql事务">MySQL事务</h1>
+<h3 id="1事务是什么">1、事务是什么？</h3>
+<p>事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分别是原子性（Atomioc）、一致性（Consistency）、隔离性（Isolation）和持久性（Durability）。其中，事务的隔离型由锁和MVCC机制实现啊，原子性和持久性由RedoLog实现，一致性由UndoLog实现的。</p>
+<ul>
+<li>原子性：事务的所有操作要么全部成功，要么全部失败。</li>
+<li>一致性：事务执行之前和执行之后，数据始终处于一致的状态。</li>
+<li>隔离型：并行执行的两个事务互相不受干扰。</li>
+<li>持久性：事务提交之后，此事务对数据的更改操作被持久化到数据库中，并且不会被回滚。</li>
+</ul>
+<h3 id="2事务并发会产生什么问题">2、事务并发会产生什么问题？</h3>
+<p>并发问题是程序无法避免的问题，核心是并发事务对同一临界资源进行操作，不进行管控就会产生不一致。</p>
+<p>举个例子：假设有一张数据表，user(uid, account)，实际数据为user（123, 100）
+<strong>A、问题1：脏读</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">1. 事务A：insert into user value<span class="o">(</span>456, 200<span class="o">)</span><span class="p">;</span>  未提交
+2. 事务B：select account from user where <span class="nv">uid</span> <span class="o">=</span> 456<span class="p">;</span> 读到account的值为200
+
+事务B中读到了事务A未提交数据，说明是脏读。
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>B、问题2: 不可重复读</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">1. 事务A：update <span class="nv">account</span> <span class="o">=</span> account + <span class="m">100</span> where <span class="nv">uid</span> <span class="o">=</span> <span class="m">123</span>
+2. 事务B：select account from user where <span class="nv">uid</span> <span class="o">=</span> 123，该处读到的acount <span class="o">=</span> 100（A未提交）
+3. 事务A：commit
+4. 事务B：select account from user where <span class="nv">uid</span> <span class="o">=</span> 123，该处读到的acount <span class="o">=</span> 200（A已提交）
+
+事务B两次读同一数据，读到前后结果分别是100、200，说明是不可重复读。
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>C、问题3: 幻读</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">1. 事务A：select * from user<span class="p">;</span>   // 查询结果: user<span class="o">(</span>123, 100<span class="o">)</span>
+2. 事务B：insert into user value<span class="o">(</span>456, 200<span class="o">)</span><span class="p">;</span> commit<span class="p">;</span>
+3. 事务A: <span class="k">select</span> * from user<span class="p">;</span>  // 查询结果：user<span class="o">(</span>123, 100<span class="o">)</span>
+4. 事务A：update user <span class="nb">set</span> <span class="nv">account</span> <span class="o">=</span> <span class="m">300</span> where <span class="nv">uid</span> <span class="o">=</span> 456<span class="p">;</span> commit<span class="p">;</span>  // <span class="nv">刚刚查询结果还不存在uid</span><span class="o">=</span>456，更新居然成功了！
+5. 事务A: <span class="k">select</span> * from user<span class="p">;</span>  // 查询结果：user<span class="o">(</span>123, 100<span class="o">)</span>、user<span class="o">(</span>456, 300<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从例子看，都是已提交的事务A对事务B造成了影响。不可重复读和幻读的区别是什么呢？</p>
+<ul>
+<li>不可重复读：主要是针对修改和删除动作，两次读的结果是不一样的，被称为不可重读（变化）。</li>
+<li>幻读：主要是针对插入动作，第一次读不存在，第二次读存在，被称为幻读（有无）。</li>
+</ul>
+<h3 id="3如何解决并发事务产生的问题">3、如何解决并发事务产生的问题？</h3>
+<p>并发问题在程序中通常控制手段有两种：悲观锁（互斥锁、读写锁）、乐观锁（CAS + 数据多版本）。</p>
+<h4 id="31在并发控制中锁机制是如何演进的">3.1、在并发控制中，锁机制是如何演进的？</h4>
+<p>我们知道，并发问题的核心是数据竞争，解决办法是临界资源管控(锁)。然而，锁机制演进的过程在本质上是<strong>性能</strong>和<strong>安全</strong>的折中。我们在应用程序中，解决并发问题通常手段有如下几种。</p>
+<ul>
+<li>互斥锁：最简单粗暴的办法是互斥锁，读写全部都串行化。它的优点是安全，缺点是性能差。</li>
+<li>读写锁：按理说读读是对数据一致性不会产生影响，于是读写锁产生实现读读并行，读写、写写串行，提升性能。</li>
+<li>CAS+数据多版本：CAS是自旋锁摆脱锁机制，但是CAS会存在ABA问题，于是通过数据多版本来解决ABC问题保障安全。同时，实现读写并行，进一步提升性能。</li>
+</ul>
+<p>名次解释：CAS（Compare And Swap）、ABA问题（百度一下）</p>
+<p>总体思路，简单总结一下。</p>
+<ul>
+<li>互斥锁：无论读还是写全部串行执行。</li>
+<li>读写锁：读读并行执行，读写、写写串行执行。</li>
+<li>数据多版本：读写并行执行。</li>
+</ul>
+<h4 id="32mysql中是如何解决并发问题的">3.2、MySQL中是如何解决并发问题的？</h4>
+<p>MySQL中是通过隔离性来保证，隔离性的底层实现是通过锁和MVCC（数据多版本）保证。从总体思路说，它的解决办法思路跟通常手段是一致的。谈到隔离性就不得不谈到隔离级别，事务中存在四种隔离级别分别是读提交、读已提交、可重复读、串行化。</p>
+<h5 id="321这几种隔离级别是什么含义呢">3.2.1、这几种隔离级别是什么含义呢？</h5>
+<p>举个例子：假设有一张数据表，user(uid, account)，实际数据为user（123, 100）
+<strong>A、读未提交</strong></p>
+<ol>
+<li>事务A：update account = account + 100 where uid = 123</li>
+<li>事务B：select account from user where uid = 123，该处读到的account = 200（A未提交）</li>
+</ol>
+<p>点评：事务A修改数据且提交，事务B马上可见，存在脏读。</p>
+<p><strong>B、读提交</strong></p>
+<ol>
+<li>事务A：update account = account + 100 where uid = 123</li>
+<li>事务B：select account from user where uid = 123，该处读到的acount = 100（A未提交）</li>
+<li>事务A：commit</li>
+<li>事务B：select account from user where uid = 123，该处读到的acount = 200（A已提交）</li>
+</ol>
+<p>点评：事务A修改数据且提交，事务B马上可见，存在不可重复读。</p>
+<p><strong>C、可重复读</strong>
+简单说，事务在未提交前查询的同一条数据，无论读多少遍都不会改变。</p>
+<ol>
+<li>事务B：select account from user where uid = 123，该处读到的acount = 100</li>
+<li>事务A：pdate account = account + 100 where uid = 123；commit； （更新且提交）</li>
+<li>事务B：select account from user where uid = 123，该处读到的acount = 100（A提交不影响B）</li>
+</ol>
+<p>点评：事务A修改数据无论是否提交，事务B都不可见。</p>
+<p><strong>D、串行化</strong>
+简单说，前一个事务没有提交事务前，下一个事务不允许进行数据操作，不过多赘述。</p>
+<h5 id="322不同隔离级别分别能解决那些事务并发问题脏读不可重复读幻读">3.2.2、不同隔离级别分别能解决那些事务并发问题（脏读、不可重复读、幻读）？</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">事务隔离级别</th>
+<th style="text-align:center">脏读</th>
+<th style="text-align:center">不可重复读</th>
+<th style="text-align:center">幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">读未提交</td>
+<td style="text-align:center">可能</td>
+<td style="text-align:center">可能</td>
+<td style="text-align:center">可能</td>
+</tr>
+<tr>
+<td style="text-align:center">读已提交</td>
+<td style="text-align:center">不可能</td>
+<td style="text-align:center">可能</td>
+<td style="text-align:center">可能</td>
+</tr>
+<tr>
+<td style="text-align:center">可重复读</td>
+<td style="text-align:center">不可能</td>
+<td style="text-align:center">不可能</td>
+<td style="text-align:center">可能</td>
+</tr>
+<tr>
+<td style="text-align:center">串行化</td>
+<td style="text-align:center">不可能</td>
+<td style="text-align:center">不可能</td>
+<td style="text-align:center">不可能</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>读未提交：普通select不加锁</li>
+<li>串行化：普通select隐式加锁，普通select全部转换成加锁select（select &hellip; in share mode）</li>
+<li>可重复读（RR）：普通select为快照读，update/delete/加锁select（select &hellip; in share mode / for update）为当前读（行锁）
+<ul>
+<li>唯一索引查询条件（记录锁）、范围查询（间隙锁）</li>
+</ul>
+</li>
+<li>读已提交（RC）：普通select为快照读，update/delete/加锁select（select &hellip; in share mode / for update）为当前读（行锁）
+<ul>
+<li>唯一索引查询条件（记录锁），会产生幻读现象</li>
+</ul>
+</li>
+</ul>
+<h5 id="323mysql是如何在可重复读隔离级别解决幻读问题的">3.2.3、Mysql是如何在可重复读隔离级别解决幻读问题的？</h5>
+<p>众所周知，数据多版本只能解决可重复读问题（行记录多版本），并不能控制记录新增产生的幻读问题。MySQL中解决幻读问题，主要是通过间隙锁和记录锁。</p>
+<p>间隙锁：本质上是事务未结束前，不允许其他记录新增记录。其中，间隙锁住要作用于范围查询。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">假设有个数据库表,user<span class="o">(</span>id, uid, account<span class="o">)</span>，存在如下记录
+user<span class="o">(</span>1, 111, 100<span class="o">)</span>
+user<span class="o">(</span>2, 222, 200<span class="o">)</span>
+user<span class="o">(</span>20, 333, 300<span class="o">)</span>
+user<span class="o">(</span>24, 444, 400<span class="o">)</span>
+
+该数据表存在间系：<span class="o">[</span>3,20<span class="o">)</span>、<span class="o">[</span>20,24<span class="o">)</span>,<span class="o">[</span>25,+∞<span class="o">)</span>
+
+事务：select * from user id &gt; 20<span class="p">;</span> // 这时候间隙<span class="o">[</span>21,24<span class="o">)</span>、<span class="o">[</span>25, +∞<span class="o">]</span>都会被间隙锁锁住，24会被记录锁锁住
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="324mvccmulti-version-concurrent-control是如何实现的">3.2.4、MVCC（Multi Version Concurrent Control）是如何实现的？</h5>
+<h6 id="3241mvvc被称为多版本并发控制什么是数据多版本">3.2.4.1、<strong>MVVC被称为多版本并发控制，什么是数据多版本？</strong></h6>
+<p>例3.2-1：假设有张数据表，数据表为user(uid, account)，初始化数据为user(123, 100)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">执行SQL语句: 
+start<span class="p">;</span>
+update user <span class="nb">set</span> <span class="nv">account</span> <span class="o">=</span> <span class="m">200</span> where <span class="nv">uid</span> <span class="o">=</span> 123<span class="p">;</span>
+update user <span class="nb">set</span> <span class="nv">account</span> <span class="o">=</span> <span class="m">300</span> where <span class="nv">uid</span> <span class="o">=</span> 123<span class="p">;</span>
+update user <span class="nb">set</span> <span class="nv">account</span> <span class="o">=</span> <span class="m">400</span> where <span class="nv">uid</span> <span class="o">=</span> 123<span class="p">;</span>
+commit<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>按照正常思想，执行完SQL的数据存储结构</p>
+<ul>
+<li>user(123, 400)</li>
+</ul>
+<p>按照数据多版本思想，执行玩SQL的数据存储结构</p>
+<ul>
+<li>user(123, 100, V1)</li>
+<li>user(123, 200, V2)</li>
+<li>user(123, 300, V3)</li>
+<li>user(123, 400, V4)</li>
+</ul>
+<p><strong>注意：这里的快照是基于每一行的行数据变更快照。</strong></p>
+<p>据上总结，数据多版本就是将数据做冗余，存储每一个时刻行记录变更的镜像。那么，事务之间的数据镜像无依赖且能找到历史数据版本，从而实现数据读写并发、事务回滚。</p>
+<h6 id="3242mysql的mvcc机制底层是如何实现的">3.2.4.2、<strong>MySQL的MVCC机制底层是如何实现的？</strong></h6>
+<p><strong>行记录的隐藏列</strong></p>
+<p>假设我们来设计数据多版本，按照最简单思路（例3.2-1），不考虑资源限制条件下直接在磁盘存多份数据就能实现这种效果，但显然存在存储资源问题，故不会被采用。</p>
+<p>那在Innodb存储引擎中如何实现做的呢？首先，在数据库中有个概念叫做隐藏列，也就是每一行数据都有隐藏列数据，它们分别是TRX_ID、ROW_ID、ROLLBACK_POINTER</p>
+<ul>
+<li>TRX_ID：更新该行数据的事务ID</li>
+<li>ROW_ID：该行的唯一标识ID（当无主键时存在）</li>
+<li>ROLLBACK_POINTER：回滚指针，它指向上一个版本，我们把指向的地址回滚段中undolog的指针</li>
+</ul>
+<div align=left><img src="./../../static/imgs/MySQL-MVCC.png" alt="MVCC存储结构" />
+**undolog**
+<p>**上面提到的undolog，什么意思？**undolog是食事务未提时，会将事务旧版本的数据存放于undolog日志里，当事务回滚或数据崩溃时，可以利用undo日志，撤销未提交事务对数据的影响。</p>
+<p><strong>undolog存什么？</strong></p>
+<ul>
+<li>insert：undolog日志存储新数据的ROW_ID(PK)，回滚时删除即可</li>
+<li>delete/update：undolog存储旧版本数据的行记录，回滚时直接恢复即可</li>
+</ul>
+<p><strong>回滚段</strong>
+回滚段是存储undolog的地方，一个回滚段对应一次事务执行的undolog集合（事务与回滚段的映射关系存在，便于快速查找到事务的历史数据版本快速回滚）。</p>
+<p><strong>快照（ReadView）</strong>
+快照是什么？快照就是基于<strong>整库的某个时刻的镜像</strong>。在不同隔离级别下快照（READVIEW）产生时机不同，可重复读隔离级别是<strong>事务启动时产生快照</strong>，读已提交隔离级别是<strong>执行更新动作时产生快照</strong>。</p>
+<p>首先，基于整库镜像，当然不是物理存储，假设整库100G，每个镜像100G，那数据库得崩溃。于是，就有了ReadView的数据结构来定义。</p>
+<ul>
+<li>m_ids：当前系统中存活的事务id的列表</li>
+<li>min_trx_id：当前系统中存活事务的最小事务id，即m_ids的最小值</li>
+<li>max_trx_id：系统下一个即将分配的事务id，**即m_ids的最大值 + 1，**并不是m_ids的最大值</li>
+<li>creator_trx_id：当前事务ID</li>
+</ul>
+<p>其中，(-∞，min_trx_id)为已提交事务，[min_trx_id,max_trx_id)为未提交事务, [max_trx_id, +∞]为未开始事务。通过这个规则来定义进行快照读的时候，确认行记录是否可读。</p>
+<ul>
+<li>如果落在已提交事务区间，表示这个版本是已提交的事务或者是当前事务自己生成的，这个数据是可见的；</li>
+<li>如果落在未提交事务区间，表示这个版本是由将来启动的事务生成的，是肯定不可见的；</li>
+<li>如果落在未开始事务区间，那就包括两种情况
+<ul>
+<li>若 row trx_id 在数组中，表示这个版本是由还没提交的事务生成的，不可见；</li>
+<li>若 row trx_id 不在数组中，表示这个版本是已经提交了的事务生成的，可见。</li>
+</ul>
+</li>
+</ul>
+<p>总之，根据数据行中ROLLBAKCK_PTR能找到所有的回滚日志（历史版本数据），通过快照中事务活跃关系和数据行中TRX_ID来比对确定是否可读来执行快照读，最终实现了MVCC中数据多版本并发读写效果。</p>
+<h3 id="4事务的执行流程">4、事务的执行流程</h3>
+<h4 id="41事务是如何执行的">4.1、事务是如何执行的？</h4>
+<h4 id="42事务是如何回滚的">4.2、事务是如何回滚的？</h4>
+<p>根据事务ID找到对应的回滚段中的undolog，将回滚段里的日志进行清空即可。</p>
+<h3 id="5数据库事务是怎么实现的">5、数据库事务是怎么实现的？</h3>
+<p>参考：https://draveness.me/mysql-transaction/</p>
+<p>原子性和持久性由RedoLog实现，一致性由UndoLog实现，隔离性由MVCC和锁实现。</p>
+<h4 id="51原子性持久性">5.1、原子性&amp;持久性</h4>
+<p>严格说，原子性和持久性由RedoLog和UndoLog保证。当然，说RedoLog也是可接受的，因为UndoLog也会产生RedoLog。UndoLog的完整性和可靠性需要RedoLog保证，因此数据库崩溃时需要先做RedoLog恢复，然后再做UndoLog回滚。</p>
+<p>总之，RedoLog的持久化保证了数据持久化到磁盘，又影响到UndoLog的可靠和完整，最终实现原子性和持久性。UndoLog用于对事务的影响进行撤销，RedoLog在错误处理时，对已提交的事务进行重做。</p>
+<ul>
+<li>发生错误或需要回滚的事务能够成功回滚（原子性）；</li>
+<li>在事务提交后，数据没得急写磁盘就宕机时，在下次重新启动后能够恢复数据（持久性）；</li>
+</ul>
+<h4 id="53一致性">5.3、一致性</h4>
+<p>原子性&amp;持久性&amp;原子性都保证了，一致性就保证了。</p>
+<p>不一致的时机：unlog、redolog、磁盘都可能出现不一致</p>
+<ul>
+<li>A时机：写了redolog，写磁盘失败
+<ul>
+<li>redolog：数据页记录与磁盘页比较，通过回放实现磁盘和redolog的一致</li>
+</ul>
+</li>
+<li>B时机：事务已提交，redolog写失败
+<ul>
+<li>undolog/binlog：数据进行比较实现一致</li>
+</ul>
+</li>
+</ul>
+<h4 id="54隔离性">5.4、隔离性</h4>
+<p>MVCC和锁</p>
+<h3 id="参考">参考</h3>
+<ol>
+<li>MySQL技术内幕InnoDB存储引擎</li>
+<li>深入理解分布式事务</li>
+<li><a href="https://draveness.me/mysql-transaction/" target="_blank" rel="noopener noreffer">https://draveness.me/mysql-transaction/</a></li>
+<li><a href="https://www.corgiboy.com/InnoD%E5%BC%95%E6%93%8E/InnoDB-%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener noreffer">InnoDB-事务原理@www.corgiboy.com</a></li>
+<li><a href="https://mp.weixin.qq.com/s/fmzaIobOihKKZ7kyZQInTg" target="_blank" rel="noopener noreffer">InnoDB并发如此高，原因竟然在这？@架构师之路</a></li>
+<li><a href="https://mp.weixin.qq.com/s/C25UbyVaRjqGP3ybIjQr-g" target="_blank" rel="noopener noreffer">MySQL-InnoDB究竟如何巧妙实现，4种事务的隔离级别@架构师之路</a></li>
+<li><a href="https://www.cnblogs.com/rjzheng/p/10841031.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/rjzheng/p/10841031.html</a></li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql-transaction/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql-design/" class="prev" rel="prev" title="MySQL设计与应用"><i class="fas fa-angle-left fa-fw"></i>MySQL设计与应用</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
