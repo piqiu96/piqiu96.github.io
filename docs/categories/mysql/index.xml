@@ -10,7 +10,7 @@
     <pubDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://example.org/mysql-transaction/</guid>
-    <description><![CDATA[MySQL事务 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分别是]]></description>
+    <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
 </item><item>
     <title>MySQL设计与应用</title>
     <link>http://example.org/mysql-design/</link>
