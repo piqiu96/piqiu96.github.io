@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>MySQL锁的实现原理 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="MySQL锁的实现原理" />
+<meta property="og:description" content="一、锁类型 1.1、自增锁 An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values. 自增" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/mysql-lock/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-10T00:11:38+08:00" />
+<meta property="article:modified_time" content="2021-12-10T00:11:38+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="MySQL锁的实现原理"/>
+<meta name="twitter:description" content="一、锁类型 1.1、自增锁 An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values. 自增"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/mysql-lock/" /><link rel="prev" href="http://example.org/mysql-transaction/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MySQL锁的实现原理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/mysql-lock\/"
+        },"genre": "posts","wordcount":  4184 ,
+        "url": "http:\/\/example.org\/mysql-lock\/","datePublished": "2021-12-10T00:11:38+08:00","dateModified": "2021-12-10T00:11:38+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "皮邱"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="阿邱爷｜Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/user/aq_avatar.jpeg"
+        data-srcset="/images/user/aq_avatar.jpeg, /images/user/aq_avatar.jpeg 1.5x, /images/user/aq_avatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/images/user/aq_avatar.jpeg"
+        title="/images/user/aq_avatar.jpeg" />阿邱爷</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">MySQL锁的实现原理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-10">2021-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4184 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一锁类型">一、锁类型</a>
+      <ul>
+        <li><a href="#11自增锁">1.1、自增锁</a></li>
+        <li><a href="#12共享锁排他锁">1.2、共享锁/排他锁</a>
+          <ul>
+            <li><a href="#21共享锁">2.1、共享锁</a></li>
+            <li><a href="#22排他锁">2.2、排他锁</a></li>
+          </ul>
+        </li>
+        <li><a href="#13意向锁">1.3、意向锁</a></li>
+        <li><a href="#14插入意向锁">1.4、插入意向锁</a></li>
+        <li><a href="#15记录锁record-locks">1.5、记录锁（Record Locks）</a></li>
+        <li><a href="#16间隙锁gap-locks">1.6、间隙锁（Gap Locks）</a></li>
+        <li><a href="#17临键锁nextkey-locks">1.7、临键锁（NextKey Locks）</a></li>
+      </ul>
+    </li>
+    <li><a href="#二案例分析">二、案例分析</a>
+      <ul>
+        <li><a href="#21唯一索引等值查询且有结果">2.1、唯一索引等值查询且有结果</a></li>
+        <li><a href="#22唯一索引等值查询不存在结果">2.2、唯一索引等值查询不存在结果</a></li>
+        <li><a href="#23唯一索引范围查询">2.3、唯一索引范围查询</a>
+          <ul>
+            <li><a href="#231范围开区间">2.3.1、范围开区间</a></li>
+            <li><a href="#232范围闭区间">2.3.2、范围闭区间</a></li>
+          </ul>
+        </li>
+        <li><a href="#24普通索引等值查询存在结果">2.4、普通索引等值查询存在结果</a></li>
+        <li><a href="#25普通索引等值查询不存在结果">2.5、普通索引等值查询不存在结果</a></li>
+        <li><a href="#26普通索引范围查询">2.6、普通索引范围查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#三死锁分析">三、死锁分析</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一锁类型">一、锁类型</h2>
+<h3 id="11自增锁">1.1、自增锁</h3>
+<blockquote>
+<p><em>An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values.</em></p>
+</blockquote>
+<p>自增锁是一种特殊的<strong>表级别锁</strong>（table-level lock），专门针对事务插入AUTO_INCREMENT类型的列。</p>
+<p>最简单的情况，如果一个事务正在往表中插入记录，所有其他事务的插入必须等待，以便第一个事务插入的行，是连续的主键值。</p>
+<h3 id="12共享锁排他锁">1.2、共享锁/排他锁</h3>
+<p>Innodb中实现了标准的行级锁，也就是共享锁/排他锁</p>
+<h4 id="21共享锁">2.1、共享锁</h4>
+<p>目标：事务拿到某一行记录的共享S锁，才能<strong>读取</strong>这一行，实现读读可并行</p>
+<p>语句：select xxx from &hellip; share in mode;</p>
+<h4 id="22排他锁">2.2、排他锁</h4>
+<p>目标：事务拿到某一行记录的排他X锁，才可以<strong>修改</strong>或<strong>删除</strong>这一行，实现读写/写写互斥</p>
+<p>语句：select xxx from &hellip; for update</p>
+<h3 id="13意向锁">1.3、意向锁</h3>
+<blockquote>
+<p>InnoDB supports multiple granularity locking which permits coexistence of row-level locks and locks on entire tables. To make locking at multiple granularity levels practical, additional types of locks called intention locks are used. Intention locks are table-level locks in InnoDB that indicate which type of lock (shared or exclusive) a transaction will require later for a row in that table. There are two types of intention locks used in InnoDB (assume that transaction T has requested a lock of the indicated type on table t):
+Intention shared (IS): Transaction T intends to set S locks on individual rows in table t.
+Intention exclusive (IX): Transaction T intends to set X locks on those rows.</p>
+<p>Before a transaction can acquire an S lock on a row in table t, it must first acquire an IS or stronger lock on t. Before a transaction can acquire an X lock on a row, it must first acquire an IX lock on t.</p>
+<p>The main purpose of IX and IS locks is to show that someone is locking a row, or going to lock a row in the table.</p>
+</blockquote>
+<p>意向锁分为意向共享锁（IS锁）和意向排它锁（IX锁）。根据官方说明，事务请求S锁前先获取IS锁，事务请求X锁前先获取IX锁。</p>
+<p>意向锁是指，未来某个时刻，事务可能要加共享/排它锁，先提前声明一个意向。</p>
+<ul>
+<li>意向共享锁：它预示，事务有意向想对表中的某些行加共享S锁</li>
+<li>意向排它锁：它预示，事务有意向对表中的某些行加排它X锁</li>
+</ul>
+<p>意向锁间不互斥，但与S、X锁可能存在互斥关系</p>
+<ul>
+<li>S与IS兼容，S与IX互斥、</li>
+<li>X与IS互斥、X与IX互斥</li>
+</ul>
+<h3 id="14插入意向锁">1.4、插入意向锁</h3>
+<blockquote>
+<p>Insert Intention Lock signals the intent to insert in such a way that multiple transactions inserting into the same index gap need not wait for each other if they are not inserting at the same position within the gap.</p>
+</blockquote>
+<p>对已有数据行的<strong>修改与删除</strong>，必须加强互斥锁X锁，那对于<strong>数据的插入</strong>，是否还需要加这么强的锁，来实施互斥呢？插入意向锁，孕育而生。</p>
+<p><strong>插入意向锁</strong>，是间隙锁(Gap Locks)的一种（所以，也是实施在索引上的），它是专门针对insert操作的。它的玩法是多个事务，在同一个索引，同一个范围区间插入记录时，<strong>如果插入的位置不冲突，不会阻塞彼此</strong>。</p>
+<p>本质上，两个写动作，分别写不同的行，通过插入意向锁试探是否有冲突，若冲突那就gap锁开始作用，若无冲突那就实现插入并发，提升性能。</p>
+<ul>
+<li>InnoDB使用<strong>共享锁</strong>，可以提高读读并发；</li>
+<li>为了保证数据强一致，InnoDB使用强<strong>互斥锁</strong>，保证同一行记录修改与删除的串行性；</li>
+<li>InnoDB使用<strong>插入意向锁</strong>，可以提高插入并发；</li>
+</ul>
+<h3 id="15记录锁record-locks">1.5、记录锁（Record Locks）</h3>
+<p><strong>说明：该论述的前提是，在可重复读隔离下进行事务动作</strong></p>
+<blockquote>
+<p>If the table has no PRIMARY KEY or suitable UNIQUE index, InnoDB internally generates a hidden clustered index on a synthetic column containing row ID values. The rows are ordered by the ID that InnoDB assigns to the rows in such a table. The row ID is a 6-byte field that increases monotonically as new rows are inserted. Thus, the rows ordered by the row ID are physically in insertion order.</p>
+</blockquote>
+<p>针对主键索引在内的唯一索引记录上加锁（若表无任何索引，则会创建一个隐藏主键索引），需注意的是是索引而不是记录，以阻止其他事务插入，更新，删除某一行。</p>
+<p><strong>记录锁的执行前提是执行当前读，而不是快照读。其中，间隙锁和临键锁也同理，下面论述也遵循这个原则。</strong></p>
+<ul>
+<li>快照读：select &hellip; from xxx</li>
+<li>当前读：update/delete/select &hellip; from xxx for update</li>
+</ul>
+<h3 id="16间隙锁gap-locks">1.6、间隙锁（Gap Locks）</h3>
+<p><strong>说明：该论述的前提是，在可重复读隔离下进行事务动作</strong></p>
+<p><strong>间隙锁</strong>，它封锁索引记录中的间隔，或者第一条索引记录之前的范围，又或者最后一条索引记录之后的范围。</p>
+<p>存在于<strong>非唯一索引</strong>中，是Innodb在提交下为了解决幻读问题时引入的锁机制，间隙锁不互斥。</p>
+<ol>
+<li>加锁的基本单位是（next-key lock）,他是前开后闭原则</li>
+<li>插叙过程中访问的对象会增加锁</li>
+<li>索引上的等值查询
+<ol>
+<li>给唯一索引加锁的时候，next-key lock升级为行锁</li>
+<li>向右遍历时最后一个值不满足查询需求时，next-key lock 退化为间隙锁</li>
+</ol>
+</li>
+<li>唯一索引上的范围查询会访问到不满足条件的第一个值为止</li>
+</ol>
+<h3 id="17临键锁nextkey-locks">1.7、临键锁（NextKey Locks）</h3>
+<p><strong>说明：该论述的前提是，在可重复读隔离下进行事务动作</strong></p>
+<blockquote>
+<p>A next-key lock is a combination of a record lock on the index record and a gap lock on the gap before the index record.</p>
+<p>By default, InnoDB operates in REPEATABLE READ transaction isolation level and with the innodb_locks_unsafe_for_binlog system variable disabled. In this case, InnoDB uses next-key locks for searches and index scans, which prevents phantom rows。</p>
+</blockquote>
+<p>临键锁，是记录锁和间隙锁的组合，它的封锁范围，既包括索引记录，又包含索引区间。</p>
+<p>默认情况下，innodb使用next-key locks来锁定记录。但当查询的索引含有唯一属性的时候，Next-Key Lock 会进行优化，将其降级为Record Lock，即仅锁住索引本身，不是范围。</p>
+<p>假设有个数据库表 test(id PK, uname)</p>
+<table>
+<thead>
+<tr>
+<th>id(primary key)</th>
+<th>name (key)</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>PK存在以下潜在的临键锁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(-∞, 1]
+(1, 5]
+(5, 10]
+(10, 15]
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="二案例分析">二、案例分析</h2>
+<h3 id="21唯一索引等值查询且有结果">2.1、唯一索引等值查询且有结果</h3>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT * FROM <code>test</code> WHERE <code>id</code> = 5 FOR UPDATE;<br>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>正常<br> INSERT INTO <code>test</code> VALUES (3, 3, 3);</td>
+<td>正常<br>INSERT INTO <code>test</code> VALUES (8, 8, 8);</td>
+</tr>
+<tr>
+<td>Commit;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>当使用等值查询且存在结果时，只使用记录锁，不产生间隙锁。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="22唯一索引等值查询不存在结果">2.2、唯一索引等值查询不存在结果</h3>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/* 开启事务 */ <br>BEGIN; <br>/* 查询并加记录锁 */<br> SELECT * FROM <code>test</code> WHERE <code>id</code> = 7 FOR UPDATE; <br> SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>阻塞<br> INSERT INTO <code>test</code> VALUES (8, 8, 8);</td>
+<td>正常 <br>INSERT INTO <code>test</code> VALUES (10, &lsquo;wangle&rsquo;, 10);</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当使用等值查询且不存在结果时，使用临键锁。</p>
+<p>id=7不存在记录，即加临键锁 (5, 10]</p>
+<p>由于数据是等值查询，并且范围的最后数据id=10不满足要求，退化为间隙锁(5,10)</p>
+<p>id = 8 写入失败，写id=10 成功</p>
+<h3 id="23唯一索引范围查询">2.3、唯一索引范围查询</h3>
+<h4 id="231范围开区间">2.3.1、范围开区间</h4>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br> SELECT * FROM <code>test</code> WHERE id &lt; 13 for update;<br> SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br> insert into test values(14,14,14);</td>
+<td>#阻塞 <br>update test set value = value +1 where id = 15;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>命中区间为(-∞, 13)，13命中的临键锁区间为(10, 15]，因为不是等值查询，所以不会降级为间隙锁(10, 15)，综合看锁止的区间为(-∞, 15]；</p>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br>  SELECT * FROM <code>test</code> WHERE id &gt; 13 for update; <br>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br> insert into test values(11,11,11);</td>
+<td>#正常 <br>update test set value = value +1 where id = 10;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>命中的区间为(13, +∞)，13命中的临键锁区间为(10, 15]，所以综合看锁止的区间为(10, +∞)；</p>
+<h4 id="232范围闭区间">2.3.2、范围闭区间</h4>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br>SELECT * FROM <code>test</code> WHERE id &gt;= 10 for update;<br> SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#正常<br> insert into test values(9,9,9);</td>
+<td>#阻塞<br> update test set value = value +1 where id = 10;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>命中的区间为(10, +∞)，因为条件包含等于，所以左区间升级为闭区间，[10, +∞)。</p>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+<th>事务D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br>SELECT * FROM <code>test</code> WHERE id &lt;= 10 for update; <br>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br> insert into test values(3,3,3);</td>
+<td>#阻塞<br> insert into test values(14,14,14);</td>
+<td>#阻塞update test set value = value +1 where id = 15;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>id &lt;= 10表示的范围为(-∞, 10]，因为是范围查询，所以会遍历下一个区间(10,15]，因为是范围查询，即使15未命中也不会退化为开区间。综合看锁定的范围为(-∞, 15]</p>
+<h3 id="24普通索引等值查询存在结果">2.4、普通索引等值查询存在结果</h3>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+<th>事务D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br> SELECT * FROM <code>test</code> WHERE name = 5 for update;<br> SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br> insert into test values(3,3,3);</td>
+<td>#阻塞<br> insert into test values(9,9,9);</td>
+<td>#正常<br>update test set value = value +1 where name = 10;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>普通索引等值查询会直接使用间隙锁，并且会向右遍历一个区间。</p>
+<p>name = 5 命中(1, 5]，向右遍一个区间为(5,10]，因为是等值查询且10不满足条件，所以降级为(5,10)，综合来看锁止的空间为(1,10)，所以事务B和C会被阻塞，事务D正常。</p>
+<h3 id="25普通索引等值查询不存在结果">2.5、普通索引等值查询不存在结果</h3>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+<th>事务D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br> SELECT * FROM <code>test</code> WHERE name = 6 for update;<br>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#正常<br> insert into test values(3,3,3);</td>
+<td>#阻塞<br> insert into test values(9,9,9);</td>
+<td>#正常<br>update test set value = value +1 where name = 10;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>name = 6 不存在记录，所以命中的区间为(5,10]，因为10 不满足条件，所以降级为(5,10)。事务B和D正常，事务C被阻塞。</p>
+<h3 id="26普通索引范围查询">2.6、普通索引范围查询</h3>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+<th>事务D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br> SELECT * FROM <code>test</code> WHERE name &lt; 13 for update;<br> SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br>insert into test values(3,3,3);</td>
+<td>#阻塞<br/>insert into test values(14,14,14);</td>
+<td>#阻塞<br/>update test set value = value +1 where name = 15;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>name &lt; 13 表示的范围为 (-∞, 13)，因为13 位于(10,15]区间，并且非等值查询，即使15未命中也不会降级为开区间，综合看锁止的范围为(-∞, 15]。</p>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+<th>事务D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br/> SELECT * FROM <code>test</code> WHERE name &lt;= 10 for update;<br/>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>阻塞<br/>insert into test values(3,3,3);</td>
+<td>#阻塞<br/> insert into test values(14,14,14);</td>
+<td>#阻塞<br/>update test set value = value +1 where name = 15;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>name &lt;=10 表示的范围为(-∞, 10]，10命中的区间为(5,10]；因为是范围查询，所以会向右遍历一个区间(10,15]，并且即使15未命中也不会退化为(10,15)；综合来看，命中的区间为(-∞, 15]。所以事务B、C、D都会被阻塞。</p>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+<th>事务C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEGIN;<br> SELECT * FROM <code>test</code> WHERE name &gt; 13 for update; <br/>SELECT SLEEP(60);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>#阻塞<br/> insert into test values(11,11,11);</td>
+<td>#正常<br/> update test set value = value +1 where name = 10;</td>
+</tr>
+<tr>
+<td>commit;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>name &gt; 13 表示的范围为(13, +∞)，13命中的间隙范围为(10,15]，所以综合看，锁定的范围为(10, +∞)，事务B阻塞，事务C正常。</p>
+<p>【分析总结】</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">唯一索引</th>
+<th>普通索引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">等值查询有结果</td>
+<td style="text-align:left">记录锁</td>
+<td>间隙锁，取值的前后相邻两个区间</td>
+</tr>
+<tr>
+<td style="text-align:left">等值查询无结果</td>
+<td style="text-align:left">临键锁，取值所在的区间</td>
+<td>临键锁，取值所在的区间</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt; x  || &lt;=x</td>
+<td style="text-align:left">(-∞, y]<br>x在表中存在时，y为x所在区间向右一个区间的上界<br>x在表中不存在时，y为x所在区间的上界</td>
+<td>(-∞, y]<br>x在表中存在时，y为x所在区间向右一个区间的上界<br>x在表中不存在时，y为x所在区间的上界</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;x</td>
+<td style="text-align:left">(y, +∞)<br>x在表中存在时，y=x<br>x在表中不存在时，y为x所在区间的下界</td>
+<td>(y, +∞)<br>x在表中存在时，y=x<br>x在表中不存在时，y为x所在区间的下界</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=x</td>
+<td style="text-align:left">[y, +∞)<br>x在表中存在时，y=x<br>x在表中不存在时，y为x所在区间的下界</td>
+<td>[y, +∞)<br>x在表中存在时，y=x<br>x在表中不存在时，y为x所在区间的下界</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三死锁分析">三、死锁分析</h2>
+<blockquote>
+<p>INSERT sets an exclusive lock on the inserted row. This lock is an index-record lock, not a next-key lock (that is, there is no gap lock) and does not prevent other sessions from inserting into the gap before the inserted row.</p>
+<p>Prior to inserting the row, a type of gap lock called an insert intention gap lock is set. This lock signals the intent to insert in such a way that multiple transactions inserting into the same index gap need not wait for each other if they are not inserting at the same position within the gap. Suppose that there are index records with values of 4 and 7. Separate transactions that attempt to insert values of 5 and 6 each lock the gap between 4 and 7 with insert intention locks prior to obtaining the exclusive lock on the inserted row, but do not block each other because the rows are nonconflicting.</p>
+<p>If a duplicate-key error occurs, a shared lock on the duplicate index record is set. This use of a shared lock can result in deadlock should there be multiple sessions trying to insert the same row if another session already has an exclusive lock.</p>
+</blockquote>
+<p>简单说就是insert执行时会给目标行加排他锁，是记录锁；不过在insert执行前，会先加insertion intention gap lock，意向插入锁，是间隙锁。</p>
+<p>如果发生了唯一键冲突错误，那么将会在重复的索引记录上加读锁。当有多个session同时插入相同的行记录时，如果另外一个session已经获得该行的排它锁，那么将会导致死锁。</p>
+<p>insert into xxx values(&hellip;) on duplicate key update &hellip;..  产生死锁的原因分析</p>
+<table>
+<thead>
+<tr>
+<th>事务A</th>
+<th>事务B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acquire X lock;duplicate;release X lock;acquire S lock;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>acquire X lock;   duplicate;release X lock;acquire S lock;</td>
+</tr>
+<tr>
+<td>prepare update;try acqure X lock;</td>
+<td>prepare update;try acqure X lock;</td>
+</tr>
+<tr>
+<td>waiting S lock from B</td>
+<td>waiting S lock from A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/f4_o-6-JEbIzPCH09mxHJg" target="_blank" rel="noopener noreffer">MySQL锁类型@架构师之路</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql-lock/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql-transaction/" class="prev" rel="prev" title="MySQL事务实现原理"><i class="fas fa-angle-left fa-fw"></i>MySQL事务实现原理</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

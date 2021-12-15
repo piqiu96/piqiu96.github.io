@@ -4,7 +4,14 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>MySQL锁的实现原理</title>
+    <link>http://example.org/mysql-lock/</link>
+    <pubDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-lock/</guid>
+    <description><![CDATA[一、锁类型 1.1、自增锁 An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values. 自增]]></description>
+</item><item>
     <title>MySQL事务实现原理</title>
     <link>http://example.org/mysql-transaction/</link>
     <pubDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</pubDate>
@@ -20,17 +27,17 @@
     <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
 </item><item>
     <title>写作工具</title>
-    <link>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</link>
+    <link>http://example.org/write_tool/</link>
     <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7/</guid>
+    <guid>http://example.org/write_tool/</guid>
     <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
 </item><item>
     <title>排序算法</title>
-    <link>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+    <link>http://example.org/sort/</link>
     <pubDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+    <guid>http://example.org/sort/</guid>
     <description><![CDATA[排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实]]></description>
 </item><item>
     <title>经典书单</title>

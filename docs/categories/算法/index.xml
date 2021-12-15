@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
             <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
     <title>排序算法</title>
-    <link>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+    <link>http://example.org/sort/</link>
     <pubDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+    <guid>http://example.org/sort/</guid>
     <description><![CDATA[排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实]]></description>
 </item></channel>
 </rss>
