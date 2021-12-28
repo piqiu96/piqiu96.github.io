@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Golang - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/golang/</link>
+        <description>Golang - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/golang/" rel="self" type="application/rss+xml" /><item>
+    <title>Go环境搭建</title>
+    <link>http://example.org/goenv/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/goenv/</guid>
+    <description><![CDATA[一、下载地址 https://golang.google.cn/dl/ 二、环境变量 1 2 3 4 5 6 7 8 9 10 11 // 设置环境变量内容 export GOHOME=/Users/qiuyong/Develop/dev_env/goenv export GOROOT=$GOHOME/go export GOPATH=$GOHOME/gopath export PATH=$PATH:$GOROOT/bin:$GOPATH/bin // 生效环境变量 source /home/work/.bash_profile // 检验 go env --json 三、配置环境 1 2 3 4 5 go env -w]]></description>
+</item><item>
+    <title>并发编程</title>
+    <link>http://example.org/concurrent/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/concurrent/</guid>
+    <description><![CDATA[并发编程 一、基本原理 1、程序是怎么跑起来的？ 进程/线程 2、cpu的进化，软件跟着发展？ 速度比较：cpu读写、内存读写、磁盘读写 3、并发编程诞]]></description>
+</item></channel>
+</rss>

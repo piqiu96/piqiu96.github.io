@@ -4,7 +4,35 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Go环境搭建</title>
+    <link>http://example.org/goenv/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/goenv/</guid>
+    <description><![CDATA[一、下载地址 https://golang.google.cn/dl/ 二、环境变量 1 2 3 4 5 6 7 8 9 10 11 // 设置环境变量内容 export GOHOME=/Users/qiuyong/Develop/dev_env/goenv export GOROOT=$GOHOME/go export GOPATH=$GOHOME/gopath export PATH=$PATH:$GOROOT/bin:$GOPATH/bin // 生效环境变量 source /home/work/.bash_profile // 检验 go env --json 三、配置环境 1 2 3 4 5 go env -w]]></description>
+</item><item>
+    <title>MySQL系统设计</title>
+    <link>http://example.org/mysql-design/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-design/</guid>
+    <description><![CDATA[MySQL系统设计 一、设计要素 1.1、基础设计 根据业务模式，设计库表结构 根据访问模式，设计索引结构 1.2、拓展设计 读性能 高可用 数据一致性 垂直]]></description>
+</item><item>
+    <title>并发编程</title>
+    <link>http://example.org/concurrent/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/concurrent/</guid>
+    <description><![CDATA[并发编程 一、基本原理 1、程序是怎么跑起来的？ 进程/线程 2、cpu的进化，软件跟着发展？ 速度比较：cpu读写、内存读写、磁盘读写 3、并发编程诞]]></description>
+</item><item>
+    <title>接口幂等设计</title>
+    <link>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</link>
+    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</guid>
+    <description><![CDATA[幂等设计 一、背景 二、问题 三、思路]]></description>
+</item><item>
     <title>MySQL锁的实现原理</title>
     <link>http://example.org/mysql-lock/</link>
     <pubDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</pubDate>
@@ -19,11 +47,11 @@
     <guid>http://example.org/mysql-transaction/</guid>
     <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
 </item><item>
-    <title>MySQL设计与应用</title>
-    <link>http://example.org/mysql-design/</link>
+    <title>MySQL实践难题</title>
+    <link>http://example.org/mysql-problem/</link>
     <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://example.org/mysql-design/</guid>
+    <guid>http://example.org/mysql-problem/</guid>
     <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
 </item><item>
     <title>写作工具</title>
@@ -32,13 +60,6 @@
     <author>作者</author>
     <guid>http://example.org/write_tool/</guid>
     <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
-</item><item>
-    <title>排序算法</title>
-    <link>http://example.org/sort/</link>
-    <pubDate>Sun, 31 Oct 2021 15:29:39 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/sort/</guid>
-    <description><![CDATA[排序算法 一、算法分类 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序（递归实现） 二、算法实]]></description>
 </item><item>
     <title>经典书单</title>
     <link>http://example.org/booklist/</link>
@@ -53,12 +74,5 @@
     <author>作者</author>
     <guid>http://example.org/git%E5%AE%9E%E6%88%98/</guid>
     <description><![CDATA[一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 + 版本控制 + 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想]]></description>
-</item><item>
-    <title>大学四年，如何成为还算不错的程序员？</title>
-    <link>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</link>
-    <pubDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F/</guid>
-    <description><![CDATA[1、问题 经常有些读者在后台问一些指导性的问题，让我冷不丁去回答，给出建议都是碎片化的，无法形成有效可落地的建议。 举个例子 我学习什么能进入优秀]]></description>
 </item></channel>
 </rss>

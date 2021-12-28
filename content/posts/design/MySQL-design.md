@@ -1,5 +1,9 @@
-# MySQL系统设计
-
+---
+title: "MySQL系统设计"
+date: 2021-12-28T15:13:44+08:00
+draft: false
+categories: ["MySQL", "系统设计"]
+---
 
 # MySQL系统设计
 
@@ -106,4 +110,3 @@
     - 步骤四：B库rename
     - 步骤五：切流量
   - 方案三：追日志
-
