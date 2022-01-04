@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>成长日记 - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</link>
+        <description>成长日记 - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>2021年度总结：接纳自己，永不服输</title>
+    <link>http://example.org/summary2021/</link>
+    <pubDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/summary2021/</guid>
+    <description><![CDATA[总结开始了&hellip;.]]></description>
+</item><item>
+    <title>2019总结：养成习惯，快速成长</title>
+    <link>http://example.org/summary2019/</link>
+    <pubDate>Wed, 01 Jan 2020 00:07:27 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/summary2019/</guid>
+    <description><![CDATA[01、问题 2019年马上就要向我们挥手告别，你是否还记得年初你对自己许下了什么心愿吗？ 呃，记得&hellip; 那你今年的目标或愿望完成了吗？]]></description>
+</item><item>
+    <title>大学四年，如何成为还算不错的程序员？</title>
+    <link>http://example.org/university-plan/</link>
+    <pubDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/university-plan/</guid>
+    <description><![CDATA[1、问题 经常有些读者问我一些指导性的问题，让我冷不丁去回答，给出建议都是碎片化的，无法形成有效可落地的建议。 举个例子 我学习什么能进入优秀的互]]></description>
+</item></channel>
+</rss>

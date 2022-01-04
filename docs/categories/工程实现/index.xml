@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工程实现 - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/</link>
+        <description>工程实现 - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>如何做系统稳定性？</title>
+    <link>http://example.org/stable-system/</link>
+    <pubDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/stable-system/</guid>
+    <description><![CDATA[#如何做系统稳定性？ 一、稳定性定义 二、稳定性分析 三、稳定性思路 预防-发现-止损-定位-复盘 四、稳定性实践]]></description>
+</item></channel>
+</rss>

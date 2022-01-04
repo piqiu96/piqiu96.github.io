@@ -2,7 +2,7 @@
 title: "MySQL系统设计"
 date: 2021-12-28T15:13:44+08:00
 draft: false
-categories: ["MySQL", "系统设计"]
+categories: ["系统设计"]
 ---
 
 # MySQL系统设计

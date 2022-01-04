@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>阅读书单 - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/</link>
+        <description>阅读书单 - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Thu, 14 Oct 2021 16:22:44 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/" rel="self" type="application/rss+xml" /><item>
+    <title>经典技术书单</title>
+    <link>http://example.org/booklist/</link>
+    <pubDate>Thu, 14 Oct 2021 16:22:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/booklist/</guid>
+    <description><![CDATA[Golang 《Go 学习笔记（第 4 版）》 《Go 学习笔记（第 6 版下卷）》 《Go 源码剖析》 《Go 程序设计语言》 《Go 语言实战》 Python 《Python Cookboo]]></description>
+</item></channel>
+</rss>

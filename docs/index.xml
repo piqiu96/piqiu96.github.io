@@ -4,9 +4,44 @@
         <link>http://example.org/</link>
         <description>这是我的全新 Hugo 网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</lastBuildDate>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>2021年度总结：接纳自己，永不服输</title>
+    <link>http://example.org/summary2021/</link>
+    <pubDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/summary2021/</guid>
+    <description><![CDATA[总结开始了&hellip;.]]></description>
+</item><item>
+    <title>如何做系统稳定性？</title>
+    <link>http://example.org/stable-system/</link>
+    <pubDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/stable-system/</guid>
+    <description><![CDATA[#如何做系统稳定性？ 一、稳定性定义 二、稳定性分析 三、稳定性思路 预防-发现-止损-定位-复盘 四、稳定性实践]]></description>
+</item><item>
+    <title>MySQL索引</title>
+    <link>http://example.org/mysql-index/</link>
+    <pubDate>Tue, 04 Jan 2022 23:33:50 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-index/</guid>
+    <description><![CDATA[MySQL索引 一、索引结构 hash：读性能（等值查询高、范围查询低） 有序数组：读性能（等值查询高，范围查询高「二分」）、写性能（元素后移性能]]></description>
+</item><item>
+    <title>MySQL优化</title>
+    <link>http://example.org/mysql-sqlbest/</link>
+    <pubDate>Tue, 04 Jan 2022 23:32:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-sqlbest/</guid>
+    <description><![CDATA[SQL优化 Sql执行顺序 (8) SELECT(9) DISTINCT column,… 选择字段 、去重 (6) AGG_FUNC(column or expression),… 聚合函数 (1) FROM [left_table] 选择表 (3) &lt;join_type&gt; JOIN &lt;right_table&gt; 链接 (2) ON &lt;join_condition&gt; 链接条件 (4)]]></description>
+</item><item>
+    <title>接口幂等设计</title>
+    <link>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</link>
+    <pubDate>Wed, 29 Dec 2021 15:13:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</guid>
+    <description><![CDATA[幂等设计 一、背景 二、问题 三、思路]]></description>
+</item><item>
     <title>Go环境搭建</title>
     <link>http://example.org/goenv/</link>
     <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
@@ -28,13 +63,6 @@
     <guid>http://example.org/concurrent/</guid>
     <description><![CDATA[并发编程 一、基本原理 1、程序是怎么跑起来的？ 进程/线程 2、cpu的进化，软件跟着发展？ 速度比较：cpu读写、内存读写、磁盘读写 3、并发编程诞]]></description>
 </item><item>
-    <title>接口幂等设计</title>
-    <link>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</link>
-    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</guid>
-    <description><![CDATA[幂等设计 一、背景 二、问题 三、思路]]></description>
-</item><item>
     <title>MySQL锁的实现原理</title>
     <link>http://example.org/mysql-lock/</link>
     <pubDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</pubDate>
@@ -48,33 +76,5 @@
     <author>作者</author>
     <guid>http://example.org/mysql-transaction/</guid>
     <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
-</item><item>
-    <title>MySQL实践难题</title>
-    <link>http://example.org/mysql-problem/</link>
-    <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/mysql-problem/</guid>
-    <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
-</item><item>
-    <title>写作工具</title>
-    <link>http://example.org/write_tool/</link>
-    <pubDate>Sun, 05 Dec 2021 08:17:29 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/write_tool/</guid>
-    <description><![CDATA[图床 网址：https://www.jsdelivr.com/?docs=gh 示例：https://cdn.jsdelivr.net/gh/p]]></description>
-</item><item>
-    <title>经典书单</title>
-    <link>http://example.org/booklist/</link>
-    <pubDate>Thu, 14 Oct 2021 16:22:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/booklist/</guid>
-    <description><![CDATA[📚 经典技术书籍 PDF 文件，涵盖：编程语言、计算机系统、网络协议、数据库、代码艺术、设计模式、算法与数据结构、系统架构、微服务、测试、程序员职业修]]></description>
-</item><item>
-    <title>Git速查</title>
-    <link>http://example.org/git%E5%AE%9E%E6%88%98/</link>
-    <pubDate>Fri, 04 Dec 2020 13:12:33 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/git%E5%AE%9E%E6%88%98/</guid>
-    <description><![CDATA[一、概念 1.1. Git是什么？ GIT是分布式版本控制系统，简单分解就是：分布式 + 版本控制 + 系统，核心要素就是版本控制。 问题：怎么理解版本控制，想想]]></description>
 </item></channel>
 </rss>
