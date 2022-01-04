@@ -2,6 +2,7 @@
 title: "MySQL优化"
 date: 2022-01-04T23:32:06+08:00
 draft: false
+categories: ["MySQL"]
 ---
 
 # SQL优化

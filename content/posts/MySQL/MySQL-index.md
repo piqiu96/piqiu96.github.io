@@ -2,6 +2,7 @@
 title: "MySQL索引"
 date: 2022-01-04T23:33:50+08:00
 draft: false
+categories: ["MySQL"]
 ---
 
 # MySQL索引
