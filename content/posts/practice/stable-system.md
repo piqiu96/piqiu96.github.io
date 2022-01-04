@@ -2,7 +2,7 @@
 title: "如何做系统稳定性？"
 date: 2022-01-04T23:45:20+08:00
 draft: false
-categories: ["工程实现"]
+categories: ["工程实践"]
 ---
 
 # #如何做系统稳定性？
