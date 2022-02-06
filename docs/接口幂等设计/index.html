@@ -6,21 +6,21 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>接口幂等设计 - 阿邱爷｜Blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="接口幂等设计" />
-<meta property="og:description" content="幂等设计 一、背景 二、问题 三、思路" />
+<meta property="og:description" content="幂等设计 一、背景 二、问题 三、思路 https://developer.aliyun.com/article/721191 https://juejin.cn/post/6906290538761158670 https://madridseven.github.io/2019/08/JAVA%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E4%B9%8BRedis%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-12-29T15:13:44+08:00" />
-<meta property="article:modified_time" content="2021-12-29T15:13:44+08:00" />
+
+
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="接口幂等设计"/>
-<meta name="twitter:description" content="幂等设计 一、背景 二、问题 三、思路"/>
+<meta name="twitter:description" content="幂等设计 一、背景 二、问题 三、思路 https://developer.aliyun.com/article/721191 https://juejin.cn/post/6906290538761158670 https://madridseven.github.io/2019/08/JAVA%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E4%B9%8BRedis%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/" /><link rel="prev" href="http://example.org/goenv/" /><link rel="next" href="http://example.org/mysql-sqlbest/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/" /><link rel="next" href="http://example.org/university-plan/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1\/"
-        },"genre": "posts","wordcount":  16 ,
-        "url": "http:\/\/example.org\/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1\/","datePublished": "2021-12-29T15:13:44+08:00","dateModified": "2021-12-29T15:13:44+08:00","publisher": {
+        },"genre": "posts","wordcount":  19 ,
+        "url": "http:\/\/example.org\/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -120,7 +120,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">接口幂等设计</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="far fa-folder fa-fw"></i>系统设计</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-29">2021-12-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 16 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 19 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -142,11 +142,14 @@
 <h3 id="一背景">一、背景</h3>
 <h3 id="二问题">二、问题</h3>
 <h3 id="三思路">三、思路</h3>
+<p><a href="https://developer.aliyun.com/article/721191" target="_blank" rel="noopener noreffer">https://developer.aliyun.com/article/721191</a>
+<a href="https://juejin.cn/post/6906290538761158670" target="_blank" rel="noopener noreffer">https://juejin.cn/post/6906290538761158670</a>
+<a href="https://madridseven.github.io/2019/08/JAVA%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E4%B9%8BRedis%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener noreffer">https://madridseven.github.io/2019/08/JAVA%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E4%B9%8BRedis%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-12-29</span>
+                <span>更新于 0001-01-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -167,8 +170,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/goenv/" class="prev" rel="prev" title="Go环境搭建"><i class="fas fa-angle-left fa-fw"></i>Go环境搭建</a>
-            <a href="/mysql-sqlbest/" class="next" rel="next" title="MySQL优化">MySQL优化<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav">
+            <a href="/university-plan/" class="next" rel="next" title="大学四年，如何成为还算不错的程序员？">大学四年，如何成为还算不错的程序员？<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Leetcode - 分类 - 阿邱爷｜Blog</title>
+        <link>http://example.org/categories/leetcode/</link>
+        <description>Leetcode - 分类 - 阿邱爷｜Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Wed, 02 Feb 2022 07:57:34 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+    <title>[Leetcode]数学逻辑</title>
+    <link>http://example.org/logical/</link>
+    <pubDate>Wed, 02 Feb 2022 07:57:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/logical/</guid>
+    <description><![CDATA[一、题集 1. 两数之和（简单） 1108. IP 地址无效化（简单） 344. 反转字符串（简单） 剑指 Offer 58 - I. 翻转单词顺序（简单） 125. 验证回文串 （简单） 9. 回文数（简单） 58. 最]]></description>
+</item></channel>
+</rss>
