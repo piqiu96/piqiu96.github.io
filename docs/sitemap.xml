@@ -2,10 +2,10 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/logical/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/leetcode/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/posts/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/logical/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/</loc><lastmod>2022-02-02T07:57:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/summary2021/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
