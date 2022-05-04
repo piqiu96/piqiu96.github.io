@@ -4,14 +4,7 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Wed, 02 Feb 2022 07:57:34 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>【Leetcode】数学逻辑</title>
-    <link>http://example.org/logical/</link>
-    <pubDate>Wed, 02 Feb 2022 07:57:34 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/logical/</guid>
-    <description><![CDATA[一、题集 1. 两数之和（简单） 1108. IP 地址无效化（简单） 344. 反转字符串（简单） 剑指 Offer 58 - I. 翻转单词顺序（简单） 125. 验证回文串 （简单） 9. 回文数（简单） 58. 最]]></description>
-</item><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
     <title>2021年度总结：接纳自己，永不服输</title>
     <link>http://example.org/summary2021/</link>
     <pubDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</pubDate>
@@ -74,5 +67,12 @@
     <author>作者</author>
     <guid>http://example.org/mysql-transaction/</guid>
     <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
+</item><item>
+    <title>MySQL实践难题</title>
+    <link>http://example.org/mysql-problem/</link>
+    <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-problem/</guid>
+    <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
 </item></channel>
 </rss>
