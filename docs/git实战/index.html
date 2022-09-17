@@ -215,10 +215,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">git pull 
-git add &lt;file&gt; 
-git commit -m <span class="s2">&#34;commit message&#34;</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">git pull 
+</span></span><span class="line"><span class="cl">git add &lt;file&gt; 
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;commit message&#34;</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>场景二：回滚commit</strong>
 <div class="details admonition tip open">
@@ -236,10 +236,10 @@ git commit -m <span class="s2">&#34;commit message&#34;</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">git log
-git reset --soft <span class="s1">&#39;版本号&#39;</span>
-git reset --soft HEAD^ 回滚到上次提交
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">git log
+</span></span><span class="line"><span class="cl">git reset --soft <span class="s1">&#39;版本号&#39;</span>
+</span></span><span class="line"><span class="cl">git reset --soft HEAD^ 回滚到上次提交
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>场景三:  切换分支且拉取代码</strong><br>
 <div class="details admonition tip open">
@@ -259,12 +259,12 @@ git reset --soft HEAD^ 回滚到上次提交
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">git branch -a
-git checkout -b &lt;branch_local&gt; orign/&lt;branch_remote&gt;
-
-baranch_local: 本地分支名，可自定义随意
-branch_remote：远程分支名，必须是仓库内名
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">git branch -a
+</span></span><span class="line"><span class="cl">git checkout -b &lt;branch_local&gt; orign/&lt;branch_remote&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">baranch_local: 本地分支名，可自定义随意
+</span></span><span class="line"><span class="cl">branch_remote：远程分支名，必须是仓库内名
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>场景四：多个commit合并</strong><br>
 <div class="details admonition tip open">
@@ -282,10 +282,10 @@ branch_remote：远程分支名，必须是仓库内名
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">git reset --soft HEAD^
-git commit --amend
-git push origin &lt;remote&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">git reset --soft HEAD^
+</span></span><span class="line"><span class="cl">git commit --amend
+</span></span><span class="line"><span class="cl">git push origin &lt;remote&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>场景五：代码冲突</strong><br>
 <div class="details admonition tip open">
@@ -308,15 +308,15 @@ git push origin &lt;remote&gt;
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">方法一：保留服务器改动，仅合入远程仓库新增配置项，标记出冲突代码！
-git stash 
-git pull
-git stash pop
-
-方法二：用远程仓库代码库文件完全覆盖本地文件，强制回滚！（慎用）
-git reset --hard
-git pull
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">方法一：保留服务器改动，仅合入远程仓库新增配置项，标记出冲突代码！
+</span></span><span class="line"><span class="cl">git stash 
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl">git stash pop
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">方法二：用远程仓库代码库文件完全覆盖本地文件，强制回滚！（慎用）
+</span></span><span class="line"><span class="cl">git reset --hard
+</span></span><span class="line"><span class="cl">git pull
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考资料">参考资料</h2>
 <ul>
@@ -353,7 +353,7 @@ git pull
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
