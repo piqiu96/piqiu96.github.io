@@ -14,3 +14,12 @@ brew install hugo
 hugo serve
 hugo serve --disableFastRender
 ```
+
+
+
+# 创建文档
+
+```
+hugo create hello.md  //默认创建路径在content/posts/hello.md
+```
+

@@ -4,7 +4,14 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Mon, 14 Feb 2022 16:22:44 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sat, 17 Sep 2022 22:24:46 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>如何做存储选型?</title>
+    <link>http://example.org/store/</link>
+    <pubDate>Sat, 17 Sep 2022 22:24:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/store/</guid>
+    <description><![CDATA[在做存储选型的时候需要考虑如下要素，数据量、并发量、实时性、一致性要求、读写分布和类型、安全性、运维性等。 根据这些指标，软件系统可分成几类。]]></description>
+</item><item>
     <title>推荐博客</title>
     <link>http://example.org/rec-blog/</link>
     <pubDate>Mon, 14 Feb 2022 16:22:44 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>http://example.org/mysql-lock/</guid>
     <description><![CDATA[一、锁类型 1.1、自增锁 An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values. 自增]]></description>
-</item><item>
-    <title>MySQL事务实现原理</title>
-    <link>http://example.org/mysql-transaction/</link>
-    <pubDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/mysql-transaction/</guid>
-    <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
 </item></channel>
 </rss>
