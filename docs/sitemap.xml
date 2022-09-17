@@ -2,11 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://example.org/categories/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/rec-blog/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/summary2021/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2022-01-05T00:03:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/stable-system/</loc><lastmod>2022-01-04T23:45:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc><lastmod>2022-01-04T23:45:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/mysql/</loc><lastmod>2022-01-04T23:33:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -25,8 +27,7 @@
             <loc>http://example.org/tags/%E5%86%99%E4%BD%9C/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/write_tool/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</loc><lastmod>2021-12-05T08:17:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/booklist/</loc><lastmod>2021-10-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/</loc><lastmod>2021-10-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/rec-book/</loc><lastmod>2021-10-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/git%E5%AE%9E%E6%88%98/</loc><lastmod>2020-12-04T13:12:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/summary2019/</loc><lastmod>2020-01-01T00:07:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/university-plan/</loc><lastmod>2019-12-05T09:14:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
