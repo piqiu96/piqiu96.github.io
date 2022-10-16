@@ -266,8 +266,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">type：
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">type：
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -311,8 +311,8 @@ System &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">possible_keys：
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">possible_keys：
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>显示可能应用在这张表中的索引</li>
@@ -322,8 +322,8 @@ System &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">key：
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">key：
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>真正使用的索引方式</li>
@@ -540,10 +540,10 @@ System &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</p>
 <h2 id="批量插入性能提升">批量插入性能提升</h2>
 <p>大量数据提交，上千，上万，批量性能非常快，mysql独有</p>
 <p>多条提交：</p>
-<p>INSERT INTO student (id,NAME) VALUES(4,&rsquo;name1&rsquo;);</p>
-<p>INSERT INTO student (id,NAME) VALUES(5,&rsquo;name2&rsquo;);</p>
+<p>INSERT INTO student (id,NAME) VALUES(4,&lsquo;name1&rsquo;);</p>
+<p>INSERT INTO student (id,NAME) VALUES(5,&lsquo;name2&rsquo;);</p>
 <p><strong>批量提交：</strong></p>
-<p>INSERT INTO student (id,NAME) VALUES(4,&rsquo;name1&rsquo;),(5,&rsquo;name2&rsquo;);</p>
+<p>INSERT INTO student (id,NAME) VALUES(4,&lsquo;name1&rsquo;),(5,&lsquo;name2&rsquo;);</p>
 <p>理由：</p>
 <ul>
 <li>默认新增SQL有事务控制，导致每条都需要事务开启和事务提交；而批量处理是一次事务开启和提交。自然速度飞升</li>
@@ -741,7 +741,7 @@ System &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
