@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/git%E5%AE%9E%E6%88%98\/"
-        },"genre": "posts","wordcount":  1270 ,
+        },"genre": "posts","wordcount":  1304 ,
         "url": "http:\/\/example.org\/git%E5%AE%9E%E6%88%98\/","datePublished": "2020-12-04T13:12:33+08:00","dateModified": "2020-12-04T13:12:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -120,7 +120,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Git速查</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>皮邱</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-04">2020-12-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1270 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-04">2020-12-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1304 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -316,6 +316,25 @@ git stash pop
 方法二：用远程仓库代码库文件完全覆盖本地文件，强制回滚！（慎用）
 git reset --hard
 git pull
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>场景6: 解决同次冲突提交</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">git fetch origin
+git rebase origin/master
+
+git add -u
+git rebase --continue
+git push origin HEAD:refs/for/master
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="参考资料">参考资料</h2>

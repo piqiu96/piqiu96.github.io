@@ -106,6 +106,16 @@ git reset --hard
 git pull
 ```
 
+**场景6: 解决同次冲突提交**
+```Bash
+git fetch origin
+git rebase origin/master
+
+git add -u
+git rebase --continue
+git push origin HEAD:refs/for/master
+```
+
 ## 参考资料
 - https://www.liaoxuefeng.com/wiki/896043488029600
 - https://git-scm.com/book/zh/v2
