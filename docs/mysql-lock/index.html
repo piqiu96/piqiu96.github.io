@@ -285,11 +285,11 @@ Intention exclusive (IX): Transaction T intends to set X locks on those rows.</p
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(-∞, 1]
-(1, 5]
-(5, 10]
-(10, 15]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(-∞, 1]
+</span></span><span class="line"><span class="cl">(1, 5]
+</span></span><span class="line"><span class="cl">(5, 10]
+</span></span><span class="line"><span class="cl">(10, 15]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="二案例分析">二、案例分析</h2>
 <h3 id="21唯一索引等值查询且有结果">2.1、唯一索引等值查询且有结果</h3>
@@ -335,7 +335,7 @@ Intention exclusive (IX): Transaction T intends to set X locks on those rows.</p
 </thead>
 <tbody>
 <tr>
-<td>/* 开启事务 */ <br>BEGIN; <br>/* 查询并加记录锁 */<br> SELECT * FROM <code>test</code> WHERE <code>id</code> = 7 FOR UPDATE; <br> SELECT SLEEP(60);</td>
+<td>/* 开启事务 <em>/ <br>BEGIN; <br>/</em> 查询并加记录锁 */<br> SELECT * FROM <code>test</code> WHERE <code>id</code> = 7 FOR UPDATE; <br> SELECT SLEEP(60);</td>
 <td></td>
 <td></td>
 </tr>
@@ -731,8 +731,8 @@ Intention exclusive (IX): Transaction T intends to set X locks on those rows.</p
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">皮邱</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

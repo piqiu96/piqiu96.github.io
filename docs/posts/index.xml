@@ -19,13 +19,6 @@
     <guid>http://example.org/rec-blog/</guid>
     <description><![CDATA[设计 为什么这么设计：https://draveness.me/whys-the-design/ 架构 java全栈技术体系：https://ww]]></description>
 </item><item>
-    <title>2021年度总结：接纳自己</title>
-    <link>http://example.org/summary2021/</link>
-    <pubDate>Wed, 05 Jan 2022 00:03:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/summary2021/</guid>
-    <description><![CDATA[一、回顾 当我准备写年度总结的时候，我大脑是空白的，感觉做了很多事情又感觉什么都没做，先回顾下今年都干了什么？ 1-2月：搜索红包项目：参与20]]></description>
-</item><item>
     <title>如何做系统稳定性？</title>
     <link>http://example.org/stable-system/</link>
     <pubDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</pubDate>
@@ -47,13 +40,6 @@
     <guid>http://example.org/mysql-sqlbest/</guid>
     <description><![CDATA[SQL优化 Sql执行顺序 (8) SELECT(9) DISTINCT column,… 选择字段 、去重 (6) AGG_FUNC(column or expression),… 聚合函数 (1) FROM [left_table] 选择表 (3) &lt;join_type&gt; JOIN &lt;right_table&gt; 链接 (2) ON &lt;join_condition&gt; 链接条件 (4)]]></description>
 </item><item>
-    <title>Go环境搭建</title>
-    <link>http://example.org/goenv/</link>
-    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/goenv/</guid>
-    <description><![CDATA[一、下载地址 https://golang.google.cn/dl/ 二、环境变量 1 2 3 4 5 6 7 8 9 10 11 // 设置环境变量内容 export GOHOME=/Users/qiuyong/Develop/dev_env/goenv export GOROOT=$GOHOME/go export GOPATH=$GOHOME/gopath export PATH=$PATH:$GOROOT/bin:$GOPATH/bin // 生效环境变量 source /home/work/.bash_profile // 检验 go env --json 三、配置环境 1 2 3 4 5 go env -w]]></description>
-</item><item>
     <title>MySQL系统设计</title>
     <link>http://example.org/mysql-design/</link>
     <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
@@ -74,5 +60,19 @@
     <author>作者</author>
     <guid>http://example.org/mysql-lock/</guid>
     <description><![CDATA[一、锁类型 1.1、自增锁 An AUTO-INC lock is a special table-level lock taken by transactions inserting into tables with AUTO_INCREMENT columns. In the simplest case, if one transaction is inserting values into the table, any other transactions must wait to do their own inserts into that table, so that rows inserted by the first transaction receive consecutive primary key values. 自增]]></description>
+</item><item>
+    <title>MySQL事务实现原理</title>
+    <link>http://example.org/mysql-transaction/</link>
+    <pubDate>Thu, 09 Dec 2021 11:07:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-transaction/</guid>
+    <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
+</item><item>
+    <title>MySQL实践难题</title>
+    <link>http://example.org/mysql-problem/</link>
+    <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mysql-problem/</guid>
+    <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
 </item></channel>
 </rss>

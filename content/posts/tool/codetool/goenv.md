@@ -1,7 +1,7 @@
 ---
 title: "Go环境搭建"
 date: 2021-12-28T15:13:44+08:00
-draft: false
+draft: true
 categories: ["Golang"]
 ---
 
