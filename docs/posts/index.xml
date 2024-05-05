@@ -12,7 +12,7 @@
     <guid>http://example.org/store/</guid>
     <description><![CDATA[在做存储选型的时候需要考虑如下要素，数据量、并发量、实时性、一致性要求、读写分布和类型、安全性、运维性等。 根据这些指标，软件系统可分成几类。]]></description>
 </item><item>
-    <title>推荐博客</title>
+    <title>优质博客</title>
     <link>http://example.org/rec-blog/</link>
     <pubDate>Mon, 14 Feb 2022 16:22:44 &#43;0800</pubDate>
     <author>作者</author>
@@ -47,7 +47,7 @@
     <guid>http://example.org/mysql-problem/</guid>
     <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
 </item><item>
-    <title>推荐书单</title>
+    <title>优质书单</title>
     <link>http://example.org/rec-book/</link>
     <pubDate>Thu, 14 Oct 2021 16:22:44 &#43;0800</pubDate>
     <author>作者</author>

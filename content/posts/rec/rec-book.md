@@ -1,5 +1,5 @@
 ---
-title: "推荐书单"
+title: "优质书单"
 date: 2021-10-14T16:22:44+08:00
 draft: false
 categories: ["推荐阅读"]

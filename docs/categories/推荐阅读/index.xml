@@ -5,14 +5,14 @@
         <description>推荐阅读 - 分类 - 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
             <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Mon, 14 Feb 2022 16:22:44 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB/" rel="self" type="application/rss+xml" /><item>
-    <title>推荐博客</title>
+    <title>优质博客</title>
     <link>http://example.org/rec-blog/</link>
     <pubDate>Mon, 14 Feb 2022 16:22:44 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://example.org/rec-blog/</guid>
     <description><![CDATA[设计 为什么这么设计：https://draveness.me/whys-the-design/ 架构 java全栈技术体系：https://ww]]></description>
 </item><item>
-    <title>推荐书单</title>
+    <title>优质书单</title>
     <link>http://example.org/rec-book/</link>
     <pubDate>Thu, 14 Oct 2021 16:22:44 &#43;0800</pubDate>
     <author>作者</author>
