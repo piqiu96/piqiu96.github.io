@@ -1,7 +1,7 @@
 ---
 title: "MySQL优化"
 date: 2022-01-04T23:32:06+08:00
-draft: false
+draft: true
 categories: ["MySQL"]
 ---
 
@@ -458,7 +458,7 @@ SELECT * FROM student WHERE id=1
 理由：
 
 - SQL解析时，如果字段相关的是表达式就进行全表扫描
-- 
+- ​
 
 ![img](https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtybbs/132/978/613/0220086000132978613.20210422111717.99721597714739349493735689204552:50521228062829:2800:B730A47102433BCB59552DE7B272342D5645DD3BA376A5134B4CD77B8C0955DF.png)
 

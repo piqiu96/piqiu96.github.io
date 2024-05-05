@@ -10,18 +10,11 @@
             <loc>http://example.org/rec-blog/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/stable-system/</loc><lastmod>2022-01-04T23:45:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/mysql/</loc><lastmod>2022-01-04T23:33:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/mysql-index/</loc><lastmod>2022-01-04T23:33:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/mysql-sqlbest/</loc><lastmod>2022-01-04T23:32:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/golang/</loc><lastmod>2021-12-28T15:13:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/mysql-design/</loc><lastmod>2021-12-28T15:13:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/concurrent/</loc><lastmod>2021-12-28T15:13:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc><lastmod>2021-12-28T15:13:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/mysql/</loc><lastmod>2021-12-10T00:11:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-lock/</loc><lastmod>2021-12-10T00:11:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-transaction/</loc><lastmod>2021-12-09T11:07:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-problem/</loc><lastmod>2021-12-09T11:00:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/rec-book/</loc><lastmod>2021-10-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/university-plan/</loc><lastmod>2019-12-05T09:14:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</loc><lastmod>2019-12-05T09:14:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E8%AE%BE%E8%AE%A1/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>http://example.org/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

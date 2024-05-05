@@ -28,34 +28,6 @@
     <guid>http://example.org/stable-system/</guid>
     <description><![CDATA[#如何做系统稳定性？ 一、稳定性定义 二、稳定性分析 三、稳定性思路 预防-发现-止损-定位-复盘 四、稳定性实践]]></description>
 </item><item>
-    <title>MySQL索引</title>
-    <link>http://example.org/mysql-index/</link>
-    <pubDate>Tue, 04 Jan 2022 23:33:50 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/mysql-index/</guid>
-    <description><![CDATA[MySQL索引 一、索引结构 hash：读性能（等值查询高、范围查询低） 有序数组：读性能（等值查询高，范围查询高「二分」）、写性能（元素后移性能]]></description>
-</item><item>
-    <title>MySQL优化</title>
-    <link>http://example.org/mysql-sqlbest/</link>
-    <pubDate>Tue, 04 Jan 2022 23:32:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/mysql-sqlbest/</guid>
-    <description><![CDATA[SQL优化 Sql执行顺序 (8) SELECT(9) DISTINCT column,… 选择字段 、去重 (6) AGG_FUNC(column or expression),… 聚合函数 (1) FROM [left_table] 选择表 (3) &lt;join_type&gt; JOIN &lt;right_table&gt; 链接 (2) ON &lt;join_condition&gt; 链接条件 (4)]]></description>
-</item><item>
-    <title>MySQL系统设计</title>
-    <link>http://example.org/mysql-design/</link>
-    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/mysql-design/</guid>
-    <description><![CDATA[MySQL系统设计 一、设计要素 1.1、基础设计 根据业务模式，设计库表结构 根据访问模式，设计索引结构 1.2、拓展设计 读性能 高可用 数据一致性 垂直]]></description>
-</item><item>
-    <title>并发编程</title>
-    <link>http://example.org/concurrent/</link>
-    <pubDate>Tue, 28 Dec 2021 15:13:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/concurrent/</guid>
-    <description><![CDATA[并发编程 一、基本原理 1、程序是怎么跑起来的？ 进程/线程 2、cpu的进化，软件跟着发展？ 速度比较：cpu读写、内存读写、磁盘读写 3、并发编程诞]]></description>
-</item><item>
     <title>MySQL锁的实现原理</title>
     <link>http://example.org/mysql-lock/</link>
     <pubDate>Fri, 10 Dec 2021 00:11:38 &#43;0800</pubDate>
@@ -70,11 +42,25 @@
     <guid>http://example.org/mysql-transaction/</guid>
     <description><![CDATA[MySQL事务原理 1、事务是什么？ 事务通常指的是逻辑上的一组操作，要么全部执行成功，要么全部执行失败。总体来说，他们具备ACID四大特性，分]]></description>
 </item><item>
-    <title>MySQL实践难题</title>
+    <title>MySQL实战经验</title>
     <link>http://example.org/mysql-problem/</link>
     <pubDate>Thu, 09 Dec 2021 11:00:03 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://example.org/mysql-problem/</guid>
     <description><![CDATA[1、数据库与缓存不一致问题 1.1、问题产生 为什么用缓存？ 提升读性能：db受限于磁盘限制，缓存基于内存，磁盘与内存的读性能想差甚远 会产生什么问]]></description>
+</item><item>
+    <title>推荐书单</title>
+    <link>http://example.org/rec-book/</link>
+    <pubDate>Thu, 14 Oct 2021 16:22:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/rec-book/</guid>
+    <description><![CDATA[Golang 《Go 学习笔记（第 4 版）》 《Go 学习笔记（第 6 版下卷）》 《Go 源码剖析》 《Go 程序设计语言》 《Go 语言实战》 Python 《Python Cookboo]]></description>
+</item><item>
+    <title>大学四年，如何成为还算不错的程序员？</title>
+    <link>http://example.org/university-plan/</link>
+    <pubDate>Thu, 05 Dec 2019 09:14:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/university-plan/</guid>
+    <description><![CDATA[1、问题 经常有些读者问我一些指导性的问题，让我冷不丁去回答，给出建议都是碎片化的，无法形成有效可落地的建议。 举个例子 我学习什么能进入优秀的互]]></description>
 </item></channel>
 </rss>

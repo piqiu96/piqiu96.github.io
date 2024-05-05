@@ -98,18 +98,18 @@ MySQL中是通过隔离性来保证，隔离性的底层实现是通过锁和MVC
 简单说，前一个事务没有提交事务前，下一个事务不允许进行数据操作，不过多赘述。
 
 #### 3.2.2、不同隔离级别分别能解决那些事务并发问题（脏读、不可重复读、幻读）？
-| 事务隔离级别 | 脏读 | 不可重复读 | 幻读 |
-| :----:  | :----:   | :----: | :----: |
-| 读未提交 | 可能   | 可能 | 可能 |
-| 读已提交 | 不可能 | 可能 | 可能 |
-| 可重复读 | 不可能 | 不可能 | 可能 |
-| 串行化   | 不可能 | 不可能 | 不可能 |
+| 事务隔离级别 |  脏读  | 不可重复读 |  幻读  |
+| :----: | :--: | :---: | :--: |
+|  读未提交  |  可能  |  可能   |  可能  |
+|  读已提交  | 不可能  |  可能   |  可能  |
+|  可重复读  | 不可能  |  不可能  |  可能  |
+|  串行化   | 不可能  |  不可能  | 不可能  |
 
 - 读未提交：普通select不加锁
 - 串行化：普通select隐式加锁，普通select全部转换成加锁select（select ... in share mode）
 - 可重复读（RR）：普通select为快照读，update/delete/加锁select（select ... in share mode / for update）为当前读（行锁），存在幻读问题
      - 唯一索引查询条件（记录锁）、范围查询（gap lock 和 nextkey lock）
-     
+
 - 读已提交（RC）：普通select为快照读，update/delete/加锁select（select ... in share mode / for update）为当前读（行锁）
      - 唯一索引查询条件（记录锁）
 
@@ -249,12 +249,12 @@ commit;
 
 MVCC和锁
 
-## 参考
+## 资料参考
 1. MySQL技术内幕InnoDB存储引擎
 2. 深入理解分布式事务
-1. [https://draveness.me/mysql-transaction/](https://draveness.me/mysql-transaction/)
-2. [InnoDB-事务原理@www.corgiboy.com](https://www.corgiboy.com/InnoD%E5%BC%95%E6%93%8E/InnoDB-%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86/)
-2. [InnoDB并发如此高，原因竟然在这？@架构师之路](https://mp.weixin.qq.com/s/fmzaIobOihKKZ7kyZQInTg)
-2. [MySQL-InnoDB究竟如何巧妙实现，4种事务的隔离级别@架构师之路](https://mp.weixin.qq.com/s/C25UbyVaRjqGP3ybIjQr-g)
-2. [https://www.cnblogs.com/rjzheng/p/10841031.html](https://www.cnblogs.com/rjzheng/p/10841031.html)
+3. [https://draveness.me/mysql-transaction/](https://draveness.me/mysql-transaction/)
+4. [InnoDB-事务原理@www.corgiboy.com](https://www.corgiboy.com/InnoD%E5%BC%95%E6%93%8E/InnoDB-%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86/)
+5. [InnoDB并发如此高，原因竟然在这？@架构师之路](https://mp.weixin.qq.com/s/fmzaIobOihKKZ7kyZQInTg)
+6. [MySQL-InnoDB究竟如何巧妙实现，4种事务的隔离级别@架构师之路](https://mp.weixin.qq.com/s/C25UbyVaRjqGP3ybIjQr-g)
+7. [https://www.cnblogs.com/rjzheng/p/10841031.html](https://www.cnblogs.com/rjzheng/p/10841031.html)
 

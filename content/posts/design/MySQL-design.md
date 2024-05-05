@@ -1,7 +1,7 @@
 ---
 title: "MySQL系统设计"
 date: 2021-12-28T15:13:44+08:00
-draft: false
+draft: true
 categories: ["系统设计"]
 ---
 
