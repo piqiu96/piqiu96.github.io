@@ -4,14 +4,7 @@
         <link>http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/</link>
         <description>工程实践 - 分类 - 阿邱爷｜Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yong_qiu_ch@163.com (皮邱)</managingEditor>
-            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Sat, 17 Sep 2022 22:24:46 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" rel="self" type="application/rss+xml" /><item>
-    <title>如何做存储选型?</title>
-    <link>http://example.org/store/</link>
-    <pubDate>Sat, 17 Sep 2022 22:24:46 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/store/</guid>
-    <description><![CDATA[在做存储选型的时候需要考虑如下要素，数据量、并发量、实时性、一致性要求、读写分布和类型、安全性、运维性等。 根据这些指标，软件系统可分成几类。]]></description>
-</item><item>
+            <webMaster>yong_qiu_ch@163.com (皮邱)</webMaster><lastBuildDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" rel="self" type="application/rss+xml" /><item>
     <title>如何做系统稳定性？</title>
     <link>http://example.org/stable-system/</link>
     <pubDate>Tue, 04 Jan 2022 23:45:20 &#43;0800</pubDate>

@@ -1,7 +1,7 @@
 ---
 title: "如何做存储选型?"
 date: 2022-09-17T22:24:46+08:00
-draft: false
+draft: true
 categories: ["工程实践"]
 ---
 
