@@ -7,14 +7,11 @@
             <loc>http://example.org/store/</loc><lastmod>2022-09-17T22:24:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc><lastmod>2022-09-17T22:24:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/</loc><lastmod>2022-09-17T22:24:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/rec-blog/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB/</loc><lastmod>2022-02-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/stable-system/</loc><lastmod>2022-01-04T23:45:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/mysql/</loc><lastmod>2021-12-10T00:11:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-lock/</loc><lastmod>2021-12-10T00:11:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-transaction/</loc><lastmod>2021-12-09T11:07:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/mysql-problem/</loc><lastmod>2021-12-09T11:00:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/rec-book/</loc><lastmod>2021-10-14T16:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/university-plan/</loc><lastmod>2019-12-05T09:14:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</loc><lastmod>2019-12-05T09:14:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
